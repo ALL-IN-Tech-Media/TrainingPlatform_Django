@@ -1,0 +1,977 @@
+Watching for file changes with StatReloader
+[03/Jun/2025 18:45:15] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:45:15] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 313
+[03/Jun/2025 18:45:15] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[03/Jun/2025 18:45:16] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:45:16] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 313
+[03/Jun/2025 18:45:16] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[03/Jun/2025 18:45:16] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 313
+[03/Jun/2025 18:45:17] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[03/Jun/2025 18:45:18] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[03/Jun/2025 18:45:19] "GET /datasets/get_user_datasets/?user=xiaofeng HTTP/1.1" 200 223
+[03/Jun/2025 18:45:20] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=222 HTTP/1.1" 200 69
+[03/Jun/2025 18:45:20] "GET /datasets/get_minio_links/?user=xiaofeng&datasetName=222&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 112428
+[03/Jun/2025 18:45:20] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[03/Jun/2025 18:45:21] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[03/Jun/2025 18:45:22] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[03/Jun/2025 18:45:23] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[03/Jun/2025 18:45:24] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[03/Jun/2025 18:45:52] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:45:52] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 313
+[03/Jun/2025 18:45:52] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[03/Jun/2025 18:45:53] "GET /datasets/get_user_datasets/?user=xiaofeng HTTP/1.1" 200 223
+[03/Jun/2025 18:45:54] "GET /datasets/get_minio_links/?user=xiaofeng&datasetName=222&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 112428
+[03/Jun/2025 18:46:02] "GET /datasets/get_dataset_is_upload/?user=xiaofeng&datasetName=222 HTTP/1.1" 200 36
+[03/Jun/2025 18:46:02] "POST /training/create_training_task/ HTTP/1.1" 200 82
+[03/Jun/2025 18:46:03] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:03] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:03] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:03] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:06] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:06] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:06] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:06] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:07] "GET /training/update_training_status/?id=5&status=%E8%AE%AD%E7%BB%83%E4%B8%AD HTTP/1.1" 200 56
+[03/Jun/2025 18:46:18] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:18] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:18] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:18] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:19] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:19] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:19] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:19] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:24] "GET /training/get_training_epoch_data?training_id=5 HTTP/1.1" 301 0
+[03/Jun/2025 18:46:24] "GET /training/get_training_epoch_data/?training_id=5 HTTP/1.1" 200 31
+[03/Jun/2025 18:46:27] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:27] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:27] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:27] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:29] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:29] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:29] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:29] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:30] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:30] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:30] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:30] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:31] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:31] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:31] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:31] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:31] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:46:31] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:46:31] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+Not Found: /training/get_curr_epoch_data/
+[03/Jun/2025 18:46:31] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 404 68
+[03/Jun/2025 18:46:40] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[03/Jun/2025 18:47:06] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[03/Jun/2025 18:47:21] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:47:21] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:47:21] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[03/Jun/2025 18:47:21] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 200 155
+[03/Jun/2025 18:47:22] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:47:22] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 589
+[03/Jun/2025 18:47:22] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[03/Jun/2025 18:47:22] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 200 155
+[03/Jun/2025 18:47:33] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[03/Jun/2025 18:47:43] "GET /training/update_training_status/?id=5&status=%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%88%90 HTTP/1.1" 200 56
+[03/Jun/2025 18:57:38] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[03/Jun/2025 18:57:38] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 595
+[03/Jun/2025 18:57:38] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[03/Jun/2025 18:57:38] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 200 155
+[04/Jun/2025 10:03:45] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[04/Jun/2025 10:03:45] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 595
+[04/Jun/2025 10:03:45] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[04/Jun/2025 10:03:45] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 200 155
+[04/Jun/2025 10:06:14] "OPTIONS /accounts/login/ HTTP/1.1" 200 0
+[04/Jun/2025 10:06:15] "POST /accounts/login/ HTTP/1.1" 200 130
+[04/Jun/2025 10:06:15] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+[04/Jun/2025 10:06:23] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 10:06:25] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 10:06:25] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 10:06:25] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 10:06:26] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 10:06:29] "GET /datasets/get_dataset/?user=J&datasetName=L HTTP/1.1" 200 262
+[04/Jun/2025 10:06:30] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 10:08:03] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 10:08:03] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 10:08:03] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 10:08:04] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 10:08:04] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 10:08:05] "GET /datasets/get_dataset/?user=J&datasetName=J HTTP/1.1" 200 228
+[04/Jun/2025 10:08:05] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 10:08:51] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 10:08:52] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 10:08:52] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 10:08:52] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 10:08:52] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 10:08:56] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+[04/Jun/2025 10:08:59] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 10:08:59] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 10:08:59] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 10:08:59] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 10:09:00] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 10:09:01] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+[04/Jun/2025 10:09:17] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+[04/Jun/2025 10:49:30] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:49:30] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 566
+[04/Jun/2025 10:49:30] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:49:30] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:49:38] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 10:49:39] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 10:49:39] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 10:50:02] "GET /datasets/get_dataset_is_upload/?user=J&datasetName=J HTTP/1.1" 200 36
+[04/Jun/2025 10:50:02] "POST /training/create_training_task/ HTTP/1.1" 200 82
+[04/Jun/2025 10:50:04] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:50:04] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:50:04] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:50:04] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 10:50:04] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 404 68
+[04/Jun/2025 10:50:07] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:50:07] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:50:07] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:50:07] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 10:50:07] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 404 68
+[04/Jun/2025 10:50:08] "GET /training/update_training_status/?id=6&status=%E8%AE%AD%E7%BB%83%E4%B8%AD HTTP/1.1" 200 56
+[04/Jun/2025 10:50:09] "GET /training/get_training_epoch_data?training_id=6 HTTP/1.1" 301 0
+[04/Jun/2025 10:50:09] "GET /training/get_training_epoch_data/?training_id=6 HTTP/1.1" 200 31
+[04/Jun/2025 10:50:14] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:50:14] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:50:14] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:50:14] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 10:50:14] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 404 68
+[04/Jun/2025 10:50:30] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:50:46] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:51:03] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:51:19] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:51:35] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:51:52] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:52:08] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:52:20] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:52:20] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:52:20] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:52:20] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:52:20] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 155
+[04/Jun/2025 10:52:23] "GET /training/get_training_epoch_data/?training_id=6 HTTP/1.1" 200 1028
+[04/Jun/2025 10:52:25] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:52:28] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:52:28] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:52:28] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:52:28] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:52:28] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 153
+[04/Jun/2025 10:52:33] "GET /training/update_training_status/?id=6&status=%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%88%90 HTTP/1.1" 200 56
+[04/Jun/2025 10:52:35] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:52:35] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 10:52:35] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:52:35] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:52:35] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 153
+[04/Jun/2025 10:52:57] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:52:57] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 10:52:57] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:52:57] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:52:57] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 153
+[04/Jun/2025 10:53:01] "GET /training/get_training_epoch_data/?training_id=6 HTTP/1.1" 200 1169
+[04/Jun/2025 10:56:25] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:56:25] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 10:56:25] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:56:25] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:56:25] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 153
+[04/Jun/2025 10:56:27] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:56:27] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 10:56:28] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:56:28] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:56:28] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 153
+[04/Jun/2025 10:56:49] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:56:49] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 10:56:49] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:56:49] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:56:49] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 153
+[04/Jun/2025 10:56:54] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:56:54] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 10:56:54] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:56:54] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:56:54] "GET /training/get_curr_epoch_data/?training_id=6 HTTP/1.1" 200 153
+[04/Jun/2025 10:56:56] "GET /training/delete_project_training_task/?id=6&user=J&projectName=J HTTP/1.1" 200 56
+[04/Jun/2025 10:56:57] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:56:57] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 566
+[04/Jun/2025 10:56:57] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:56:57] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:57:22] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 10:57:22] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 10:57:23] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 10:57:55] "GET /datasets/get_dataset_is_upload/?user=J&datasetName=L HTTP/1.1" 200 36
+[04/Jun/2025 10:57:55] "POST /training/create_training_task/ HTTP/1.1" 200 82
+[04/Jun/2025 10:57:56] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:57:56] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:57:56] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:57:56] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 10:57:57] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 404 68
+[04/Jun/2025 10:58:00] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:58:00] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:58:00] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:58:00] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 10:58:00] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 404 68
+[04/Jun/2025 10:58:00] "GET /training/update_training_status/?id=7&status=%E8%AE%AD%E7%BB%83%E4%B8%AD HTTP/1.1" 200 56
+[04/Jun/2025 10:58:57] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:58:57] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 10:58:57] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 404 68
+[04/Jun/2025 10:59:36] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 10:59:56] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 10:59:56] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 10:59:56] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 10:59:56] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 10:59:56] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:00:20] "GET /training/get_training_epoch_data?training_id=7 HTTP/1.1" 301 0
+[04/Jun/2025 11:00:20] "GET /training/get_training_epoch_data/?training_id=7 HTTP/1.1" 200 172
+[04/Jun/2025 11:01:03] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:01:09] "GET /training/get_training_epoch_data/?training_id=7 HTTP/1.1" 200 315
+[04/Jun/2025 11:01:22] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:01:22] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 11:01:22] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:01:22] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:01:22] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:01:23] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:01:23] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 11:01:23] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:01:23] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:01:23] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:01:26] "GET /training/get_training_epoch_data/?training_id=7 HTTP/1.1" 200 315
+[04/Jun/2025 11:02:30] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:02:51] "GET /training/get_training_epoch_data/?training_id=7 HTTP/1.1" 200 458
+[04/Jun/2025 11:03:02] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:03:03] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 11:03:03] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:03:03] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:03:03] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:03:06] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:03:06] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 828
+[04/Jun/2025 11:03:06] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:03:06] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:03:06] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:03:57] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:05:23] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:06:48] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:07:02] "GET /training/update_training_status/?id=7&status=%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%88%90 HTTP/1.1" 200 56
+[04/Jun/2025 11:07:48] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:07:48] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 11:07:48] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:07:48] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:07:49] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:07:52] "GET /training/get_training_epoch_data/?training_id=7 HTTP/1.1" 200 886
+[04/Jun/2025 11:08:52] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:08:52] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 11:08:52] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:08:52] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:08:52] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:09:07] "GET /training/get_training_epoch_data?training_id=3 HTTP/1.1" 301 0
+[04/Jun/2025 11:09:07] "GET /training/get_training_epoch_data/?training_id=3 HTTP/1.1" 200 739
+[04/Jun/2025 11:09:10] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:09:10] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 11:09:10] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:09:10] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:09:10] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 03, 2025 - 18:45:13
+Django version 4.2.17, using settings 'AIproject.settings'
+Starting development server at http://0.0.0.0:8100/
+Quit the server with CONTROL-C.
+
+4
+4
+4
+4
+4
+5
+4
+5
+4
+5
+4
+5
+[]
+4
+5
+4
+5
+4
+5
+4
+5
+4
+5
+4
+5
+4
+5
+4
+5
+4
+5
+Attempting to log in with email: J@163.com and password: 123456
+找到用户: J
+密码验证成功
+更新现有的 token
+2
+3
+2
+3
+6
+2
+3
+6
+[]
+2
+3
+6
+2
+3
+6
+[{'id': 24, 'epoch_number': 0, 'mAP50': 0.143, 'mAP95': 0.038, 'precision': 0.096, 'recall': 0.773, 'create_time': datetime.datetime(2025, 6, 4, 2, 50, 30, 751453, tzinfo=datetime.timezone.utc)}, {'id': 25, 'epoch_number': 1, 'mAP50': 0.974, 'mAP95': 0.569, 'precision': 0.941, 'recall': 0.909, 'create_time': datetime.datetime(2025, 6, 4, 2, 50, 46, 904488, tzinfo=datetime.timezone.utc)}, {'id': 26, 'epoch_number': 2, 'mAP50': 0.786, 'mAP95': 0.398, 'precision': 0.691, 'recall': 0.957, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 3, 284778, tzinfo=datetime.timezone.utc)}, {'id': 27, 'epoch_number': 3, 'mAP50': 0.912, 'mAP95': 0.39, 'precision': 0.775, 'recall': 0.883, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 19, 142062, tzinfo=datetime.timezone.utc)}, {'id': 28, 'epoch_number': 4, 'mAP50': 0.977, 'mAP95': 0.661, 'precision': 0.915, 'recall': 0.94, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 35, 347137, tzinfo=datetime.timezone.utc)}, {'id': 29, 'epoch_number': 5, 'mAP50': 0.995, 'mAP95': 0.627, 'precision': 0.996, 'recall': 0.997, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 52, 30260, tzinfo=datetime.timezone.utc)}, {'id': 30, 'epoch_number': 6, 'mAP50': 0.995, 'mAP95': 0.716, 'precision': 0.996, 'recall': 0.997, 'create_time': datetime.datetime(2025, 6, 4, 2, 52, 8, 494801, tzinfo=datetime.timezone.utc)}]
+2
+3
+6
+2
+3
+6
+2
+3
+6
+[{'id': 24, 'epoch_number': 0, 'mAP50': 0.143, 'mAP95': 0.038, 'precision': 0.096, 'recall': 0.773, 'create_time': datetime.datetime(2025, 6, 4, 2, 50, 30, 751453, tzinfo=datetime.timezone.utc)}, {'id': 25, 'epoch_number': 1, 'mAP50': 0.974, 'mAP95': 0.569, 'precision': 0.941, 'recall': 0.909, 'create_time': datetime.datetime(2025, 6, 4, 2, 50, 46, 904488, tzinfo=datetime.timezone.utc)}, {'id': 26, 'epoch_number': 2, 'mAP50': 0.786, 'mAP95': 0.398, 'precision': 0.691, 'recall': 0.957, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 3, 284778, tzinfo=datetime.timezone.utc)}, {'id': 27, 'epoch_number': 3, 'mAP50': 0.912, 'mAP95': 0.39, 'precision': 0.775, 'recall': 0.883, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 19, 142062, tzinfo=datetime.timezone.utc)}, {'id': 28, 'epoch_number': 4, 'mAP50': 0.977, 'mAP95': 0.661, 'precision': 0.915, 'recall': 0.94, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 35, 347137, tzinfo=datetime.timezone.utc)}, {'id': 29, 'epoch_number': 5, 'mAP50': 0.995, 'mAP95': 0.627, 'precision': 0.996, 'recall': 0.997, 'create_time': datetime.datetime(2025, 6, 4, 2, 51, 52, 30260, tzinfo=datetime.timezone.utc)}, {'id': 30, 'epoch_number': 6, 'mAP50': 0.995, 'mAP95': 0.716, 'precision': 0.996, 'recall': 0.997, 'create_time': datetime.datetime(2025, 6, 4, 2, 52, 8, 494801, tzinfo=datetime.timezone.utc)}, {'id': 31, 'epoch_number': 7, 'mAP50': 0.995, 'mAP95': 0.747, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 2, 52, 25, 80538, tzinfo=datetime.timezone.utc)}]
+2
+3
+6
+2
+3
+6
+2
+3
+6
+2
+3
+6
+2
+3
+2
+3
+7
+2
+3
+7
+2
+3
+7
+2
+3
+7
+[{'id': 32, 'epoch_number': 0, 'mAP50': 0.263, 'mAP95': 0.093, 'precision': 0.212, 'recall': 0.768, 'create_time': datetime.datetime(2025, 6, 4, 2, 59, 36, 980413, tzinfo=datetime.timezone.utc)}]
+[{'id': 32, 'epoch_number': 0, 'mAP50': 0.263, 'mAP95': 0.093, 'precision': 0.212, 'recall': 0.768, 'create_time': datetime.datetime(2025, 6, 4, 2, 59, 36, 980413, tzinfo=datetime.timezone.utc)}, {'id': 33, 'epoch_number': 1, 'mAP50': 0.549, 'mAP95': 0.329, 'precision': 0.702, 'recall': 0.504, 'create_time': datetime.datetime(2025, 6, 4, 3, 1, 3, 432693, tzinfo=datetime.timezone.utc)}]
+2
+3
+7
+2
+3
+7
+[{'id': 32, 'epoch_number': 0, 'mAP50': 0.263, 'mAP95': 0.093, 'precision': 0.212, 'recall': 0.768, 'create_time': datetime.datetime(2025, 6, 4, 2, 59, 36, 980413, tzinfo=datetime.timezone.utc)}, {'id': 33, 'epoch_number': 1, 'mAP50': 0.549, 'mAP95': 0.329, 'precision': 0.702, 'recall': 0.504, 'create_time': datetime.datetime(2025, 6, 4, 3, 1, 3, 432693, tzinfo=datetime.timezone.utc)}]
+[{'id': 32, 'epoch_number': 0, 'mAP50': 0.263, 'mAP95': 0.093, 'precision': 0.212, 'recall': 0.768, 'create_time': datetime.datetime(2025, 6, 4, 2, 59, 36, 980413, tzinfo=datetime.timezone.utc)}, {'id': 33, 'epoch_number': 1, 'mAP50': 0.549, 'mAP95': 0.329, 'precision': 0.702, 'recall': 0.504, 'create_time': datetime.datetime(2025, 6, 4, 3, 1, 3, 432693, tzinfo=datetime.timezone.utc)}, {'id': 34, 'epoch_number': 2, 'mAP50': 0.651, 'mAP95': 0.269, 'precision': 0.854, 'recall': 0.601, 'create_time': datetime.datetime(2025, 6, 4, 3, 2, 30, 19010, tzinfo=datetime.timezone.utc)}]
+2
+3
+7
+2
+3
+7
+2
+3
+7
+[{'id': 32, 'epoch_number': 0, 'mAP50': 0.263, 'mAP95': 0.093, 'precision': 0.212, 'recall': 0.768, 'create_time': datetime.datetime(2025, 6, 4, 2, 59, 36, 980413, tzinfo=datetime.timezone.utc)}, {'id': 33, 'epoch_number': 1, 'mAP50': 0.549, 'mAP95': 0.329, 'precision': 0.702, 'recall': 0.504, 'create_time': datetime.datetime(2025, 6, 4, 3, 1, 3, 432693, tzinfo=datetime.timezone.utc)}, {'id': 34, 'epoch_number': 2, 'mAP50': 0.651, 'mAP95': 0.269, 'precision': 0.854, 'recall': 0.601, 'create_time': datetime.datetime(2025, 6, 4, 3, 2, 30, 19010, tzinfo=datetime.timezone.utc)}, {'id': 35, 'epoch_number': 3, 'mAP50': 0.746, 'mAP95': 0.449, 'precision': 0.532, 'recall': 0.853, 'create_time': datetime.datetime(2025, 6, 4, 3, 3, 57, 468854, tzinfo=datetime.timezone.utc)}, {'id': 36, 'epoch_number': 4, 'mAP50': 0.776, 'mAP95': 0.521, 'precision': 0.62, 'recall': 0.991, 'create_time': datetime.datetime(2025, 6, 4, 3, 5, 23, 196693, tzinfo=datetime.timezone.utc)}, {'id': 37, 'epoch_number': 5, 'mAP50': 0.767, 'mAP95': 0.558, 'precision': 0.632, 'recall': 0.993, 'create_time': datetime.datetime(2025, 6, 4, 3, 6, 48, 427199, tzinfo=datetime.timezone.utc)}]
+2
+3
+7
+[{'id': 6, 'epoch_number': 0, 'mAP50': 0.263, 'mAP95': 0.093, 'precision': 0.212, 'recall': 0.768, 'create_time': datetime.datetime(2025, 6, 3, 9, 51, 39, 904577, tzinfo=datetime.timezone.utc)}, {'id': 7, 'epoch_number': 1, 'mAP50': 0.259, 'mAP95': 0.082, 'precision': 0.22, 'recall': 0.791, 'create_time': datetime.datetime(2025, 6, 3, 9, 53, 5, 798132, tzinfo=datetime.timezone.utc)}, {'id': 8, 'epoch_number': 2, 'mAP50': 0.689, 'mAP95': 0.405, 'precision': 0.925, 'recall': 0.592, 'create_time': datetime.datetime(2025, 6, 3, 9, 54, 29, 496720, tzinfo=datetime.timezone.utc)}, {'id': 9, 'epoch_number': 3, 'mAP50': 0.743, 'mAP95': 0.479, 'precision': 0.878, 'recall': 0.625, 'create_time': datetime.datetime(2025, 6, 3, 9, 55, 52, 882599, tzinfo=datetime.timezone.utc)}, {'id': 10, 'epoch_number': 4, 'mAP50': 0.768, 'mAP95': 0.565, 'precision': 0.645, 'recall': 0.984, 'create_time': datetime.datetime(2025, 6, 3, 9, 57, 15, 866817, tzinfo=datetime.timezone.utc)}]
+2
+3
+7
+[{'id': 32, 'epoch_number': 0, 'mAP50': 0.263, 'mAP95': 0.093, 'precision': 0.212, 'recall': 0.768, 'create_time': datetime.datetime(2025, 6, 4, 2, 59, 36, 980413, tzinfo=datetime.timezone.utc)}, {'id': 33, 'epoch_number': 1, 'mAP50': 0.549, 'mAP95': 0.329, 'precision': 0.702, 'recall': 0.504, 'create_time': datetime.datetime(2025, 6, 4, 3, 1, 3, 432693, tzinfo=datetime.timezone.utc)}, {'id': 34, 'epoch_number': 2, 'mAP50': 0.651, 'mAP95': 0.269, 'precision': 0.854, 'recall': 0.601, 'create_time': datetime.datetime(2025, 6, 4, 3, 2, 30, 19010, tzinfo=datetime.timezone.utc)}, {'id': 35, 'epoch_number': 3, 'mAP50': 0.746, 'mAP95': 0.449, 'precision': 0.532, 'recall': 0.853, 'create_time': datetime.datetime(2025, 6, 4, 3, 3, 57, 468854, tzinfo=datetime.timezone.utc)}, {'id': 36, 'epoch_number': 4, 'mAP50': 0.776, 'mAP95': 0.521, 'precision': 0.62, 'recall': 0.991, 'create_time': datetime.datetime(2025, 6, 4, 3, 5, 23, 196693, tzinfo=datetime.timezone.utc)}, {'id': 37, 'epoch_number': 5, 'mAP50': 0.767, 'mAP95': 0.558, 'precision': 0.632, 'recall': 0.993, 'create_time': datetime.datetime(2025, 6, 4, 3, 6, 48, 427199, tzinfo=datetime.timezone.utc)}][04/Jun/2025 11:09:12] "GET /training/get_training_epoch_data/?training_id=7 HTTP/1.1" 200 886
+[04/Jun/2025 11:09:17] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:09:17] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 11:09:18] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:09:18] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:09:18] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:09:19] "GET /training/get_training_epoch_data?training_id=2 HTTP/1.1" 301 0
+[04/Jun/2025 11:09:19] "GET /training/get_training_epoch_data/?training_id=2 HTTP/1.1" 200 453
+[04/Jun/2025 11:09:23] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:09:23] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 11:09:23] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:09:23] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:09:23] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:11:09] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 11:11:09] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 11:11:09] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 11:11:09] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 11:11:09] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 11:34:42] "OPTIONS /accounts/register/ HTTP/1.1" 200 0
+[04/Jun/2025 11:34:42] "POST /accounts/register/ HTTP/1.1" 200 56
+[04/Jun/2025 11:34:55] "OPTIONS /accounts/login/ HTTP/1.1" 200 0
+[04/Jun/2025 11:34:55] "POST /accounts/login/ HTTP/1.1" 200 143
+[04/Jun/2025 11:34:55] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 16
+[04/Jun/2025 11:34:57] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 16
+[04/Jun/2025 11:35:15] "OPTIONS /datasets/upload/ HTTP/1.1" 200 0
+[04/Jun/2025 11:35:17] "POST /datasets/upload/ HTTP/1.1" 200 74
+[04/Jun/2025 11:35:19] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 243
+[04/Jun/2025 11:35:19] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 30
+[04/Jun/2025 11:35:19] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[04/Jun/2025 11:35:47] "POST /datasets/upload/ HTTP/1.1" 200 74
+[04/Jun/2025 11:35:49] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 505
+[04/Jun/2025 11:35:49] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[04/Jun/2025 11:35:49] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 30
+[04/Jun/2025 11:35:49] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[04/Jun/2025 11:35:49] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[04/Jun/2025 11:35:51] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 16
+[04/Jun/2025 11:36:05] "POST /datasets/create_project/ HTTP/1.1" 200 62
+[04/Jun/2025 11:36:07] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 170
+[04/Jun/2025 11:36:12] "POST /datasets/create_project/ HTTP/1.1" 200 62
+[04/Jun/2025 11:36:14] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 11:36:14] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:14] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 32
+[04/Jun/2025 11:36:16] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 505
+[04/Jun/2025 11:36:16] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[04/Jun/2025 11:36:16] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 246879
+[04/Jun/2025 11:36:25] "GET /datasets/get_dataset_is_upload/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 36
+[04/Jun/2025 11:36:25] "POST /training/create_training_task/ HTTP/1.1" 200 82
+[04/Jun/2025 11:36:27] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:27] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 11:36:27] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 404 68
+[04/Jun/2025 11:36:30] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:30] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 11:36:30] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 404 68
+[04/Jun/2025 11:36:32] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 11:36:35] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[04/Jun/2025 11:36:35] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 32
+[04/Jun/2025 11:36:36] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 11:36:37] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:37] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 11:36:37] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 404 68
+[04/Jun/2025 11:36:39] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:39] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 11:36:39] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 404 68
+[04/Jun/2025 11:36:39] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:39] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 11:36:39] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 404 68
+[04/Jun/2025 11:36:42] "GET /training/update_training_status/?id=8&status=%E8%AE%AD%E7%BB%83%E4%B8%AD HTTP/1.1" 200 56
+[04/Jun/2025 11:36:55] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:55] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 11:36:55] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 404 68
+[04/Jun/2025 11:36:59] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:36:59] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 11:36:59] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 404 68
+[04/Jun/2025 11:37:05] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:37:25] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:37:42] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:37:57] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:37:57] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+[04/Jun/2025 11:37:57] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 154
+[04/Jun/2025 11:37:58] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:37:58] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 356
+[04/Jun/2025 11:37:58] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 154
+[04/Jun/2025 11:37:59] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:38:16] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:38:33] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:38:49] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:39:06] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:39:23] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:39:41] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 11:39:50] "GET /training/update_training_status/?id=8&status=%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%88%90 HTTP/1.1" 200 56
+[04/Jun/2025 11:59:45] "POST /accounts/login/ HTTP/1.1" 200 143
+[04/Jun/2025 11:59:45] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 11:59:47] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[04/Jun/2025 11:59:47] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[04/Jun/2025 11:59:47] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[04/Jun/2025 11:59:48] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[04/Jun/2025 11:59:48] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[04/Jun/2025 11:59:49] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 11:59:50] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 11:59:50] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 362
+[04/Jun/2025 11:59:50] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 153
+[04/Jun/2025 11:59:51] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 11:59:52] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[04/Jun/2025 11:59:52] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 32
+[04/Jun/2025 11:59:54] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 15:25:08] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 15:25:08] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 15:25:08] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 15:25:08] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 15:25:08] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 15:25:14] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:25:14] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 15:25:14] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 15:25:15] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 15:25:15] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:18] "GET /datasets/get_dataset/?user=J&datasetName=L HTTP/1.1" 200 262
+[04/Jun/2025 15:25:18] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:22] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:25:22] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 15:25:22] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 15:25:23] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 15:25:23] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:24] "GET /datasets/get_dataset/?user=J&datasetName=L HTTP/1.1" 200 262
+[04/Jun/2025 15:25:24] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:26] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:25:26] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 15:25:26] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 15:25:26] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 15:25:27] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:28] "GET /datasets/get_dataset/?user=J&datasetName=L HTTP/1.1" 200 262
+[04/Jun/2025 15:25:28] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:29] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:25:29] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 15:25:29] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 15:25:30] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 15:25:30] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:33] "GET /datasets/get_dataset/?user=J&datasetName=L HTTP/1.1" 200 262
+[04/Jun/2025 15:25:33] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:35] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:25:35] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 15:25:35] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 15:25:35] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 15:25:36] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:38] "GET /datasets/get_dataset/?user=J&datasetName=L HTTP/1.1" 200 262
+[04/Jun/2025 15:25:39] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:25:40] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:25:40] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 15:25:40] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 15:25:40] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 15:25:40] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 15:25:40] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 15:25:43] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:25:43] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 15:25:43] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 15:25:43] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 15:25:44] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:26:14] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+[04/Jun/2025 15:26:15] "GET /datasets/get_project/?user=J&projectName=J HTTP/1.1" 200 150
+[04/Jun/2025 15:26:15] "GET /training/get_project_training_tasks/?user=J&projectName=J HTTP/1.1" 200 834
+[04/Jun/2025 15:26:15] "GET /training/get_curr_epoch_data/?training_id=2 HTTP/1.1" 200 152
+[04/Jun/2025 15:26:15] "GET /training/get_curr_epoch_data/?training_id=3 HTTP/1.1" 200 155
+[04/Jun/2025 15:26:15] "GET /training/get_curr_epoch_data/?training_id=7 HTTP/1.1" 200 155
+[04/Jun/2025 15:26:17] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[04/Jun/2025 15:26:18] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[04/Jun/2025 15:26:18] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[04/Jun/2025 15:26:18] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[04/Jun/2025 15:26:18] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[04/Jun/2025 15:26:20] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+Watching for file changes with StatReloader
+[04/Jun/2025 18:20:19] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[04/Jun/2025 18:20:21] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[04/Jun/2025 18:20:30] "GET /datasets/get_project/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 156
+[04/Jun/2025 18:20:30] "GET /training/get_project_training_tasks/?user=xiaofeng&projectName=232332 HTTP/1.1" 200 595
+[04/Jun/2025 18:20:30] "GET /training/get_curr_epoch_data/?training_id=4 HTTP/1.1" 200 151
+[04/Jun/2025 18:20:30] "GET /training/get_curr_epoch_data/?training_id=5 HTTP/1.1" 200 155
+[04/Jun/2025 18:20:41] "GET /datasets/get_user_datasets/?user=xiaofeng HTTP/1.1" 200 223
+[04/Jun/2025 18:20:42] "GET /datasets/get_minio_links/?user=xiaofeng&datasetName=222&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 112428
+[04/Jun/2025 18:20:54] "GET /datasets/get_dataset_is_upload/?user=xiaofeng&datasetName=222 HTTP/1.1" 200 36
+Internal Server Error: /training/create_training_task/
+Traceback (most recent call last):
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/http/client.py", line 1298, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/http/client.py", line 1058, in _send_output
+    self.send(msg)
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/http/client.py", line 996, in send
+    self.connect()
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fad2e640fd0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.31.138', port=5000): Max retries exceeded with url: /train_detect (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fad2e640fd0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/ooin_training/TrainingPlatform_Django/training/views.py", line 47, in create_training_task
+    response = requests.post(f'{FLASK_API}/train_detect', json={
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.31.138', port=5000): Max retries exceeded with url: /train_detect (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fad2e640fd0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[04/Jun/2025 18:20:54] "POST /training/create_training_task/ HTTP/1.1" 500 183551
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 04, 2025 - 18:18:30
+Django version 4.2.17, using settings 'AIproject.settings'
+Starting development server at http://0.0.0.0:8097/
+Quit the server with CONTROL-C.
+
+4
+5
+Watching for file changes with StatReloader
+[04/Jun/2025 18:25:59] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[04/Jun/2025 18:26:14] "POST /accounts/login/ HTTP/1.1" 200 143
+[04/Jun/2025 18:26:14] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 18:26:16] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[04/Jun/2025 18:26:16] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 362
+[04/Jun/2025 18:26:16] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 153
+[04/Jun/2025 18:26:18] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[04/Jun/2025 18:26:19] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[04/Jun/2025 18:26:19] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 32
+[04/Jun/2025 18:26:26] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[04/Jun/2025 18:26:26] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[04/Jun/2025 18:26:27] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[04/Jun/2025 18:26:43] "GET /datasets/get_dataset_is_upload/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 36
+[04/Jun/2025 18:26:43] "POST /training/create_training_task/ HTTP/1.1" 200 82
+[04/Jun/2025 18:26:44] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[04/Jun/2025 18:26:44] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 345
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 18:26:44] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 404 68
+[04/Jun/2025 18:27:27] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[04/Jun/2025 18:27:27] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 345
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 18:27:27] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 404 68
+[04/Jun/2025 18:27:29] "GET /training/update_training_status/?id=12&status=%E8%AE%AD%E7%BB%83%E4%B8%AD HTTP/1.1" 200 56
+[04/Jun/2025 18:27:34] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[04/Jun/2025 18:27:34] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 345
+Not Found: /training/get_curr_epoch_data/
+[04/Jun/2025 18:27:34] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 404 68
+[04/Jun/2025 18:28:57] "OPTIONS /accounts/login/ HTTP/1.1" 200 0
+[04/Jun/2025 18:28:57] "POST /accounts/login/ HTTP/1.1" 200 145
+[04/Jun/2025 18:28:57] "GET /datasets/get_user_projects/?user=xiaofeng HTTP/1.1" 200 142
+[04/Jun/2025 18:29:01] "GET /datasets/get_user_datasets/?user=xiaofeng HTTP/1.1" 200 223
+[04/Jun/2025 18:29:01] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=222 HTTP/1.1" 200 69
+[04/Jun/2025 18:29:01] "GET /datasets/get_minio_links/?user=xiaofeng&datasetName=222&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 112428
+[04/Jun/2025 18:29:02] "GET /datasets/get_dataset/?user=xiaofeng&datasetName=222 HTTP/1.1" 200 237
+[04/Jun/2025 18:29:03] "GET /datasets/get_minio_links/?user=xiaofeng&datasetName=222&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 112428
+[04/Jun/2025 18:29:08] "GET /datasets/get_user_datasets/?user=xiaofeng HTTP/1.1" 200 223
+[04/Jun/2025 18:29:08] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=222 HTTP/1.1" 200 69
+[04/Jun/2025 18:29:08] "GET /datasets/get_minio_links/?user=xiaofeng&datasetName=222&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 112428
+[04/Jun/2025 18:29:23] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:31:12] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:32:55] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:34:36] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:36:18] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:37:58] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:39:38] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:41:19] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:43:00] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:44:41] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:46:23] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:48:04] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:49:46] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:51:25] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:53:07] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:54:50] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:56:31] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:58:13] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 18:59:54] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 19:01:36] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[04/Jun/2025 19:01:50] "GET /training/update_training_status/?id=12&status=%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%88%90 HTTP/1.1" 200 56
+[05/Jun/2025 01:05:08] "OPTIONS /accounts/get_user_info HTTP/1.1" 200 0
+[05/Jun/2025 01:05:08] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 01:05:08] "OPTIONS /accounts/get_user_info/ HTTP/1.1" 200 0
+[05/Jun/2025 01:05:08] "GET /training/get_project_training_tasks/?user=&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 32
+Unauthorized: /accounts/get_user_info/
+[05/Jun/2025 01:05:08] "GET /accounts/get_user_info/ HTTP/1.1" 401 45
+[05/Jun/2025 09:54:48] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+[05/Jun/2025 09:54:52] "GET /datasets/get_user_projects/?user=J HTTP/1.1" 200 136
+[05/Jun/2025 09:54:53] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[05/Jun/2025 09:54:53] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[05/Jun/2025 09:54:53] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[05/Jun/2025 09:54:53] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[05/Jun/2025 09:54:54] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[05/Jun/2025 10:15:28] "OPTIONS /accounts/get_user_info HTTP/1.1" 200 0
+[05/Jun/2025 10:15:28] "GET /accounts/get_user_info HTTP/1.1" 301 0
+[05/Jun/2025 10:15:28] "OPTIONS /accounts/get_user_info/ HTTP/1.1" 200 0
+Unauthorized: /accounts/get_user_info/
+[05/Jun/2025 10:15:28] "GET /accounts/get_user_info/ HTTP/1.1" 401 45
+[05/Jun/2025 10:15:58] "OPTIONS /accounts/login/ HTTP/1.1" 200 0
+[05/Jun/2025 10:15:59] "POST /accounts/login/ HTTP/1.1" 200 143
+[05/Jun/2025 10:15:59] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 10:16:04] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[05/Jun/2025 10:16:04] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:16:04] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:16:04] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[05/Jun/2025 10:16:05] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:16:27] "GET /datasets/get_dataset/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 290
+[05/Jun/2025 10:16:28] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:16:35] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 10:16:37] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[05/Jun/2025 10:16:37] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:16:37] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:16:37] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[05/Jun/2025 10:16:38] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:16:38] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 10:16:43] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 10:16:43] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 351
+[05/Jun/2025 10:16:43] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 200 156
+[05/Jun/2025 10:16:47] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[05/Jun/2025 10:16:48] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[05/Jun/2025 10:16:48] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:17:04] "GET /datasets/get_dataset_is_upload/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 36
+[05/Jun/2025 10:17:04] "POST /training/create_training_task/ HTTP/1.1" 200 82
+[05/Jun/2025 10:17:06] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 10:17:06] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 665
+[05/Jun/2025 10:17:06] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 200 156
+Not Found: /training/get_curr_epoch_data/
+[05/Jun/2025 10:17:06] "GET /training/get_curr_epoch_data/?training_id=13 HTTP/1.1" 404 68
+[05/Jun/2025 10:17:08] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 10:17:08] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 665
+[05/Jun/2025 10:17:08] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 200 156
+Not Found: /training/get_curr_epoch_data/
+[05/Jun/2025 10:17:08] "GET /training/get_curr_epoch_data/?training_id=13 HTTP/1.1" 404 68
+[05/Jun/2025 10:17:09] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[05/Jun/2025 10:17:09] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[05/Jun/2025 10:17:10] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:17:11] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 10:17:11] "GET /training/update_training_status/?id=13&status=%E8%AE%AD%E7%BB%83%E4%B8%AD HTTP/1.1" 200 56
+[05/Jun/2025 10:17:12] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[05/Jun/2025 10:17:12] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 362
+[05/Jun/2025 10:17:12] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 153
+[05/Jun/2025 10:17:13] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[05/Jun/2025 10:17:13] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[05/Jun/2025 10:17:14] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:17:22] "GET /datasets/get_dataset_is_upload/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 36
+[05/Jun/2025 10:17:22] "POST /training/create_training_task/ HTTP/1.1" 200 82
+[05/Jun/2025 10:17:24] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[05/Jun/2025 10:17:24] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 689
+[05/Jun/2025 10:17:24] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 153
+Not Found: /training/get_curr_epoch_data/
+[05/Jun/2025 10:17:24] "GET /training/get_curr_epoch_data/?training_id=14 HTTP/1.1" 404 68
+[05/Jun/2025 10:17:26] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[05/Jun/2025 10:17:26] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:17:26] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:17:26] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[05/Jun/2025 10:17:26] "GET /datasets/get_dataset/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 290
+[05/Jun/2025 10:17:26] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:17:27] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:17:28] "GET /training/update_training_status/?id=14&status=%E8%AE%AD%E7%BB%83%E4%B8%AD HTTP/1.1" 200 56
+[05/Jun/2025 10:17:28] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 10:17:29] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 10:17:29] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 665
+[05/Jun/2025 10:17:29] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 200 156
+Not Found: /training/get_curr_epoch_data/
+[05/Jun/2025 10:17:29] "GET /training/get_curr_epoch_data/?training_id=13 HTTP/1.1" 404 68
+[05/Jun/2025 10:17:30] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 10:17:30] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 665
+[05/Jun/2025 10:17:30] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 200 156
+Not Found: /training/get_curr_epoch_data/
+[05/Jun/2025 10:17:31] "GET /training/get_curr_epoch_data/?training_id=13 HTTP/1.1" 404 68
+[05/Jun/2025 10:17:39] "GET /training/get_training_epoch_data?training_id=12 HTTP/1.1" 301 0
+[05/Jun/2025 10:17:39] "GET /training/get_training_epoch_data/?training_id=12 HTTP/1.1" 200 2892
+[05/Jun/2025 10:17:50] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:17:57] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 10:18:06] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:18:22] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:18:38] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:18:54] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:19:03] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:19:10] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:19:27] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:19:43] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:19:59] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:20:16] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:20:25] "GET /training/update_training_status/?id=14&status=%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%88%90 HTTP/1.1" 200 56
+[05/Jun/2025 10:20:46] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:22:27] "POST /training/insert_training_epoch_status/ HTTP/1.1" 200 92
+[05/Jun/2025 10:22:40] "GET /training/update_training_status/?id=13&status=%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%88%90 HTTP/1.1" 200 56
+[05/Jun/2025 10:24:25] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 10:24:26] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 671
+[05/Jun/2025 10:24:26] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 200 156
+[05/Jun/2025 10:24:26] "GET /training/get_curr_epoch_data/?training_id=13 HTTP/1.1" 200 155
+[05/Jun/2025 10:24:28] "GET /datasets/get_project/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 172
+[05/Jun/2025 10:24:28] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E6%96%B9%E5%9D%97%E8%AF%86%E5%88%AB HTTP/1.1" 200 671
+[05/Jun/2025 10:24:28] "GET /training/get_curr_epoch_data/?training_id=12 HTTP/1.1" 200 156
+[05/Jun/2025 10:24:28] "GET /training/get_curr_epoch_data/?training_id=13 HTTP/1.1" 200 155
+[05/Jun/2025 10:24:31] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 10:24:31] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[05/Jun/2025 10:24:31] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 695
+[05/Jun/2025 10:24:32] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 153
+[05/Jun/2025 10:24:32] "GET /training/get_curr_epoch_data/?training_id=14 HTTP/1.1" 200 153
+[05/Jun/2025 10:24:34] "GET /training/get_training_epoch_data?training_id=14 HTTP/1.1" 301 0
+[05/Jun/2025 10:24:34] "GET /training/get_training_epoch_data/?training_id=14 HTTP/1.1" 200 1442
+[05/Jun/2025 10:24:37] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[05/Jun/2025 10:24:37] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 695
+[05/Jun/2025 10:24:37] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 153
+[05/Jun/2025 10:24:37] "GET /training/get_curr_epoch_data/?training_id=14 HTTP/1.1" 200 153
+[05/Jun/2025 10:24:42] "GET /training/get_training_epoch_data?training_id=8 HTTP/1.1" 301 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 04, 2025 - 18:25:49
+Django version 4.2.17, using settings 'AIproject.settings'
+Starting development server at http://0.0.0.0:8097/
+Quit the server with CONTROL-C.
+
+Attempting to log in with email: 123456789@163.com and password: 123456
+找到用户: admin1
+密码验证成功
+更新现有的 token
+8
+12
+12
+12
+Attempting to log in with email: 1169646434@qq.com and password: liuchang630.
+找到用户: xiaofeng
+密码验证成功
+更新现有的 token
+ob3CurNw6hwp3gg6UNtUHsPZL166y7iCbcAUm6ocSb0
+-qYbCQPYpo3QwfnZ8z2oUQ4H61cmNOyuCq5DMueXHMA
+Attempting to log in with email: 123456789@163.com and password: 123456
+找到用户: admin1
+密码验证成功
+更新现有的 token
+12
+12
+13
+12
+13
+8
+8
+14
+12
+13
+12
+13
+[{'id': 51, 'epoch_number': 0, 'mAP50': 0.304, 'mAP95': 0.109, 'precision': 0.237, 'recall': 0.624, 'create_time': datetime.datetime(2025, 6, 4, 10, 29, 23, 880046, tzinfo=datetime.timezone.utc)}, {'id': 52, 'epoch_number': 1, 'mAP50': 0.357, 'mAP95': 0.202, 'precision': 0.258, 'recall': 0.932, 'create_time': datetime.datetime(2025, 6, 4, 10, 31, 12, 80114, tzinfo=datetime.timezone.utc)}, {'id': 53, 'epoch_number': 2, 'mAP50': 0.346, 'mAP95': 0.116, 'precision': 0.284, 'recall': 0.994, 'create_time': datetime.datetime(2025, 6, 4, 10, 32, 55, 728030, tzinfo=datetime.timezone.utc)}, {'id': 54, 'epoch_number': 3, 'mAP50': 0.382, 'mAP95': 0.292, 'precision': 0.31, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 10, 34, 36, 608610, tzinfo=datetime.timezone.utc)}, {'id': 55, 'epoch_number': 4, 'mAP50': 0.747, 'mAP95': 0.548, 'precision': 0.328, 'recall': 0.998, 'create_time': datetime.datetime(2025, 6, 4, 10, 36, 18, 121353, tzinfo=datetime.timezone.utc)}, {'id': 56, 'epoch_number': 5, 'mAP50': 0.689, 'mAP95': 0.521, 'precision': 0.568, 'recall': 0.976, 'create_time': datetime.datetime(2025, 6, 4, 10, 37, 58, 736225, tzinfo=datetime.timezone.utc)}, {'id': 57, 'epoch_number': 6, 'mAP50': 0.765, 'mAP95': 0.582, 'precision': 0.637, 'recall': 0.998, 'create_time': datetime.datetime(2025, 6, 4, 10, 39, 38, 799842, tzinfo=datetime.timezone.utc)}, {'id': 58, 'epoch_number': 7, 'mAP50': 0.858, 'mAP95': 0.668, 'precision': 0.626, 'recall': 0.998, 'create_time': datetime.datetime(2025, 6, 4, 10, 41, 19, 89976, tzinfo=datetime.timezone.utc)}, {'id': 59, 'epoch_number': 8, 'mAP50': 0.983, 'mAP95': 0.859, 'precision': 0.794, 'recall': 0.934, 'create_time': datetime.datetime(2025, 6, 4, 10, 43, 0, 283053, tzinfo=datetime.timezone.utc)}, {'id': 60, 'epoch_number': 9, 'mAP50': 0.994, 'mAP95': 0.823, 'precision': 0.799, 'recall': 0.997, 'create_time': datetime.datetime(2025, 6, 4, 10, 44, 41, 713025, tzinfo=datetime.timezone.utc)}, {'id': 61, 'epoch_number': 10, 'mAP50': 0.994, 'mAP95': 0.87, 'precision': 0.819, 'recall': 0.986, 'create_time': datetime.datetime(2025, 6, 4, 10, 46, 23, 400308, tzinfo=datetime.timezone.utc)}, {'id': 62, 'epoch_number': 11, 'mAP50': 0.99, 'mAP95': 0.859, 'precision': 0.789, 'recall': 0.995, 'create_time': datetime.datetime(2025, 6, 4, 10, 48, 4, 938368, tzinfo=datetime.timezone.utc)}, {'id': 63, 'epoch_number': 12, 'mAP50': 0.979, 'mAP95': 0.868, 'precision': 0.777, 'recall': 0.998, 'create_time': datetime.datetime(2025, 6, 4, 10, 49, 46, 244463, tzinfo=datetime.timezone.utc)}, {'id': 64, 'epoch_number': 13, 'mAP50': 0.968, 'mAP95': 0.861, 'precision': 0.77, 'recall': 0.978, 'create_time': datetime.datetime(2025, 6, 4, 10, 51, 25, 892433, tzinfo=datetime.timezone.utc)}, {'id': 65, 'epoch_number': 14, 'mAP50': 0.992, 'mAP95': 0.882, 'precision': 0.949, 'recall': 0.967, 'create_time': datetime.datetime(2025, 6, 4, 10, 53, 7, 405178, tzinfo=datetime.timezone.utc)}, {'id': 66, 'epoch_number': 15, 'mAP50': 0.953, 'mAP95': 0.846, 'precision': 0.773, 'recall': 0.983, 'create_time': datetime.datetime(2025, 6, 4, 10, 54, 50, 243642, tzinfo=datetime.timezone.utc)}, {'id': 67, 'epoch_number': 16, 'mAP50': 0.932, 'mAP95': 0.847, 'precision': 0.772, 'recall': 0.944, 'create_time': datetime.datetime(2025, 6, 4, 10, 56, 31, 817463, tzinfo=datetime.timezone.utc)}, {'id': 68, 'epoch_number': 17, 'mAP50': 0.986, 'mAP95': 0.899, 'precision': 0.911, 'recall': 0.94, 'create_time': datetime.datetime(2025, 6, 4, 10, 58, 13, 65713, tzinfo=datetime.timezone.utc)}, {'id': 69, 'epoch_number': 18, 'mAP50': 0.983, 'mAP95': 0.898, 'precision': 0.817, 'recall': 0.975, 'create_time': datetime.datetime(2025, 6, 4, 10, 59, 54, 801831, tzinfo=datetime.timezone.utc)}, {'id': 70, 'epoch_number': 19, 'mAP50': 0.987, 'mAP95': 0.913, 'precision': 0.913, 'recall': 0.939, 'create_time': datetime.datetime(2025, 6, 4, 11, 1, 36, 615006, tzinfo=datetime.timezone.utc)}]
+12
+13
+12
+13
+8
+14
+[{'id': 71, 'epoch_number': 0, 'mAP50': 0.143, 'mAP95': 0.038, 'precision': 0.096, 'recall': 0.773, 'create_time': datetime.datetime(2025, 6, 5, 2, 17, 50, 681304, tzinfo=datetime.timezone.utc)}, {'id': 72, 'epoch_number': 1, 'mAP50': 0.772, 'mAP95': 0.371, 'precision': 0.647, 'recall': 0.88, 'create_time': datetime.datetime(2025, 6, 5, 2, 18, 6, 600990, tzinfo=datetime.timezone.utc)}, {'id': 73, 'epoch_number': 2, 'mAP50': 0.864, 'mAP95': 0.263, 'precision': 0.755, 'recall': 0.92, 'create_time': datetime.datetime(2025, 6, 5, 2, 18, 22, 519914, tzinfo=datetime.timezone.utc)}, {'id': 74, 'epoch_number': 3, 'mAP50': 0.683, 'mAP95': 0.335, 'precision': 0.617, 'recall': 0.91, 'create_time': datetime.datetime(2025, 6, 5, 2, 18, 38, 197233, tzinfo=datetime.timezone.utc)}, {'id': 75, 'epoch_number': 4, 'mAP50': 0.995, 'mAP95': 0.722, 'precision': 0.998, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 5, 2, 18, 54, 507407, tzinfo=datetime.timezone.utc)}, {'id': 77, 'epoch_number': 5, 'mAP50': 0.995, 'mAP95': 0.603, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 5, 2, 19, 10, 828842, tzinfo=datetime.timezone.utc)}, {'id': 78, 'epoch_number': 6, 'mAP50': 0.995, 'mAP95': 0.694, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 5, 2, 19, 27, 2509, tzinfo=datetime.timezone.utc)}, {'id': 79, 'epoch_number': 7, 'mAP50': 0.995, 'mAP95': 0.761, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 5, 2, 19, 43, 198824, tzinfo=datetime.timezone.utc)}, {'id': 80, 'epoch_number': 8, 'mAP50': 0.995, 'mAP95': 0.682, 'precision': 1.0, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 5, 2, 19, 59, 895473, tzinfo=datetime.timezone.utc)}, {'id': 81, 'epoch_number': 9, 'mAP50': 0.995, 'mAP95': 0.777, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 5, 2, 20, 16, 333118, tzinfo=datetime.timezone.utc)}]
+8
+14
+[{'id': 38, 'epoch_number': 0, 'mAP50': 0.143, 'mAP95': 0.038, 'precision': 0.096, 'recall': 0.773, 'create_time': datetime.datetime(2025, 6, 4, 3, 37, 5, 779548, tzinfo=datetime.timezone.utc)}, {'id': 39, 'epoch_number': 1, 'mAP50': 0.772, 'mAP95': 0.371, 'precision': 0.647, 'recall': 0.88, 'create_time': datetime.datetime(2025, 6, 4, 3, 37, 25, 46486, tzinfo=datetime.timezone.utc)}, {'id': 40, 'epoch_number': 2, 'mAP50': 0.864, 'mAP95': 0.263, 'precision': 0.755, 'recall': 0.92, 'create_time': datetime.datetime(2025, 6, 4, 3, 37, 42, 89217, tzinfo=datetime.timezone.utc)}, {'id': 41, 'epoch_number': 3, 'mAP50': 0.683, 'mAP95': 0.335, 'precision': 0.617, 'recall': 0.91, 'create_time': datetime.datetime(2025, 6, 4, 3, 37, 59, 843929, tzinfo=datetime.timezone.utc)}, {'id': 42, 'epoch_number': 4, 'mAP50': 0.995, 'mAP95': 0.722, 'precision': 0.998, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 3, 38, 16, 654520, tzinfo=datetime.timezone.utc)}, {'id': 43, 'epoch_number': 5, 'mAP50': 0.995, 'mAP95': 0.603, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 3, 38, 33, 529089, tzinfo=datetime.timezone.utc)}, {'id': 44, 'epoch_number': 6, 'mAP50': 0.995, 'mAP95': 0.694, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 3, 38, 49, 191243, tzinfo=datetime.timezone.utc)}, {'id': 45, 'epoch_number': 7, 'mAP50': 0.995, 'mAP95': 0.761, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 3, 39, 6, 266229, tzinfo=datetime.timezone.utc)}, {'id': 46, 'epoch_number': 8, 'mAP50': 0.995, 'mAP95': 0.682, 'precision': 1.0, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 3, 39, 23, 937463, tzinfo=datetime.timezone.utc)}, {'id': 47, 'epoch_number': 9, 'mAP50': 0.995, 'mAP95': 0.777, 'precision': 0.999, 'recall': 1.0, 'create_time': datetime.datetime(2025, 6, 4, 3, 39, 41, 541028, tzinfo=datetime.timezone.utc)}][05/Jun/2025 10:24:42] "GET /training/get_training_epoch_data/?training_id=8 HTTP/1.1" 200 1442
+[05/Jun/2025 10:24:44] "GET /datasets/get_project/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 184
+[05/Jun/2025 10:24:44] "GET /training/get_project_training_tasks/?user=admin1&projectName=%E7%BA%A2%E8%89%B2%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 695
+[05/Jun/2025 10:24:44] "GET /training/get_curr_epoch_data/?training_id=8 HTTP/1.1" 200 153
+[05/Jun/2025 10:24:44] "GET /training/get_curr_epoch_data/?training_id=14 HTTP/1.1" 200 153
+[05/Jun/2025 10:24:46] "GET /datasets/get_user_datasets/?user=admin1 HTTP/1.1" 200 504
+[05/Jun/2025 10:24:46] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:24:46] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 69
+[05/Jun/2025 10:24:46] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E5%81%87%E4%BA%BA%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 131428
+[05/Jun/2025 10:24:46] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:24:48] "GET /datasets/get_dataset/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B HTTP/1.1" 200 290
+[05/Jun/2025 10:24:49] "GET /datasets/get_minio_links/?user=admin1&datasetName=%E6%96%B9%E5%9D%97%E6%A3%80%E6%B5%8B&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 394073
+[05/Jun/2025 10:24:51] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 13:22:05] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 13:22:08] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 13:22:31] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+[05/Jun/2025 15:52:34] "GET /datasets/get_user_datasets/?user=J HTTP/1.1" 200 448
+[05/Jun/2025 15:52:35] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=J HTTP/1.1" 200 69
+[05/Jun/2025 15:52:35] "GET /datasets/get_dataset_is_upload/?user=lzz&datasetName=L HTTP/1.1" 200 69
+[05/Jun/2025 15:52:35] "GET /datasets/get_minio_links/?user=J&datasetName=J&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 103428
+[05/Jun/2025 15:52:35] "GET /datasets/get_minio_links/?user=J&datasetName=L&nextImage=&taskType=Detection&pageSize=60 HTTP/1.1" 200 291873
+[05/Jun/2025 17:05:27] "OPTIONS /accounts/get_user_info HTTP/1.1" 200 0
+[05/Jun/2025 17:05:27] "OPTIONS /accounts/get_user_info/ HTTP/1.1" 200 0
+Unauthorized: /accounts/get_user_info/
+[05/Jun/2025 17:05:27] "GET /accounts/get_user_info/ HTTP/1.1" 401 45
+[05/Jun/2025 17:06:13] "OPTIONS /accounts/login/ HTTP/1.1" 200 0
+[05/Jun/2025 17:06:13] "POST /accounts/login/ HTTP/1.1" 200 143
+[05/Jun/2025 17:06:13] "GET /datasets/get_user_projects/?user=admin1 HTTP/1.1" 200 314
+/home/ooin/ooin_training/TrainingPlatform_Django/datasets/models.py changed, reloading.
+
+8
+14
+KqACBksU9gf0NklKTcF9lYl_mg0LuKmpotM9a9_UCgo
+Attempting to log in with email: 123456789@163.com and password: 123456
+找到用户: admin1
+密码验证成功
+更新现有的 token
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/django/core/management/commands/runserver.py", line 133, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/ooin/anaconda3/envs/lzz_aidjango/lib/python3.11/site-packages/django/core/management/base.py", line 556, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+datasets.CreatorProfile.avatar: (fields.E210) Cannot use ImageField because Pillow is not installed.
+	HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+
+System check identified 1 issue (0 silenced).
+Watching for file changes with StatReloader
+[18/Jun/2025 18:53:30] "GET /datasets/get_dataset_detail/?user_id=3&dataset_id=34 HTTP/1.1" 200 215
