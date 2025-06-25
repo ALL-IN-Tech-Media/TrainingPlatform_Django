@@ -24,6 +24,7 @@ urlpatterns = [
     path("delete_dataset_api/", views.delete_dataset_api, name="delete_dataset_api"),
     path("get_match_list/", views.get_match_list, name="get_match_list"),
     path("remove_data_from_dataset/", views.remove_data_from_dataset, name="remove_data_from_dataset"),
+    path("export_dataset_to_jsonl/", views.export_dataset_to_jsonl, name="export_dataset_to_jsonl"),
     # path("get_match_by_date/", views.get_match_by_date, name="get_match_by_date"),
     # path("delete_match/", views.delete_match, name="delete_match"),
     # path("temp_test/", views.temp_test, name="temp_test"),
