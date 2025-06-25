@@ -30,7 +30,6 @@ task_type_map = {'Detect':'Detection', 'Classify':'Classification'}
 def create_dataset(request):
     """创建一个数据集的接口，包含参数校验、用户校验、名称唯一性校验，统一返回格式。保证本地文件和数据库原子性。"""
     if request.method == 'POST':
-        import uuid
         import shutil
         from django.db import transaction
         try:
@@ -55,28 +54,10 @@ def create_dataset(request):
         if Dataset.objects.filter(name=name, user=user).exists():
             return JsonResponse({'code': 400, 'message': '该用户下数据集名称已存在', 'data': {}}, status=400)
 
-        # 先尝试创建本地目录和parquet文件（用临时ID）
-        temp_id = str(uuid.uuid4())
         user_dir = os.path.join(LOCAL_DATA_DIR, str(user.id))
-        dataset_dir = os.path.join(user_dir, temp_id)
-        parquet_path = os.path.join(dataset_dir, f"{temp_id}.parquet")
-        try:
-            if not os.path.exists(user_dir):
-                os.makedirs(user_dir)
-            if not os.path.exists(dataset_dir):
-                os.makedirs(dataset_dir)
-            # # 创建空表结构的Parquet文件（可根据后续实际字段调整）
-            # empty_df = pd.DataFrame()
-            # empty_df.to_parquet(parquet_path)
-        except Exception as e:
-            # 本地文件夹或文件创建失败
-            if os.path.exists(dataset_dir):
-                shutil.rmtree(dataset_dir, ignore_errors=True)
-            return JsonResponse({'code': 500, 'message': f'本地文件夹或文件创建失败: {e}', 'data': {}}, status=500)
-
-        # 一切成功后，插入数据库，并重命名文件夹和parquet文件
         try:
             with transaction.atomic():
+                # 先插入数据库，获取id
                 dataset = Dataset(
                     name=name,
                     user=user,
@@ -86,16 +67,18 @@ def create_dataset(request):
                     categories=categories
                 )
                 dataset.save()
-                real_dataset_dir = os.path.join(user_dir, str(dataset.id))
-                os.rename(dataset_dir, real_dataset_dir)
+                # 再创建文件夹和parquet文件
+                real_dataset_dir = os.path.join(user_dir, str(dataset.id), 'datasets')
+                if not os.path.exists(user_dir):
+                    os.makedirs(user_dir)
+                if not os.path.exists(real_dataset_dir):
+                    os.makedirs(real_dataset_dir)
                 real_parquet_path = os.path.join(real_dataset_dir, f"{dataset.id}.parquet")
-                if os.path.exists(parquet_path):
-                    os.rename(parquet_path, real_parquet_path)
         except Exception as e:
-            # 数据库插入失败，清理本地文件
-            if os.path.exists(dataset_dir):
-                shutil.rmtree(dataset_dir, ignore_errors=True)
-            return JsonResponse({'code': 500, 'message': f'数据库插入失败: {e}', 'data': {}}, status=500)
+            # 失败时清理本地文件夹
+            if os.path.exists(real_dataset_dir):
+                shutil.rmtree(real_dataset_dir, ignore_errors=True)
+            return JsonResponse({'code': 500, 'message': f'创建数据集失败: {e}', 'data': {}}, status=500)
 
         return JsonResponse({'code': 200, 'message': '数据集创建成功', 'data': {'dataset_id': dataset.id}})
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
@@ -111,10 +94,11 @@ def add_data_to_dataset(request):
         product_id = data.get('product_id')
         creator_id = data.get('creator_id')
         is_matched = data.get('is_matched')
+        prompt = data.get('prompt')
         dataset_id = data.get('dataset_id')
         user_id = data.get('user_id')
-        if not product_id or not creator_id or not dataset_id or not user_id:
-            return JsonResponse({'code': 400, 'message': '缺少product_id或creator_id或dataset_id或user_id参数', 'data': {}}, status=400)
+        if not product_id or not creator_id or not dataset_id or not user_id or not prompt:
+            return JsonResponse({'code': 400, 'message': '缺少product_id或creator_id或dataset_id或user_id或prompt参数', 'data': {}}, status=400)
         try:
             product = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
@@ -137,7 +121,7 @@ def add_data_to_dataset(request):
             return JsonResponse({'code': 400, 'message': '数据集不存在', 'data': {}}, status=400)
         
         user_dir = os.path.join(LOCAL_DATA_DIR, str(dataset.user.id))
-        dataset_dir = os.path.join(user_dir, str(dataset.id))
+        dataset_dir = os.path.join(user_dir, str(dataset.id), 'datasets')
         parquet_path = os.path.join(dataset_dir, f"{dataset.id}.parquet")
 
         # 组装json数据
@@ -154,7 +138,10 @@ def add_data_to_dataset(request):
         # 字段重命名
         creator_dict['creator_id'] = creator_dict.pop('id')
         product_dict['product_id'] = product_dict.pop('id')
-        row = {**creator_dict, **product_dict, 'is_matched': is_matched, 'create_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        # 字段加前缀
+        creator_prefixed = {f'creator_{k}': v for k, v in creator_dict.items()}
+        product_prefixed = {f'product_{k}': v for k, v in product_dict.items()}
+        row = {**creator_prefixed, **product_prefixed, 'is_matched': is_matched, 'prompt': prompt, 'create_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         
         if not os.path.exists(parquet_path):
             # 文件不存在，直接创建新文件并写入当前数据
@@ -164,7 +151,7 @@ def add_data_to_dataset(request):
         else:
             # 文件存在，检查是否已包含该数据
             con = duckdb.connect()
-            query = f"SELECT COUNT(*) FROM read_parquet('{parquet_path}') WHERE product_id={product_id} AND creator_id={creator_id}"
+            query = f"SELECT COUNT(*) FROM read_parquet('{parquet_path}') WHERE product_product_id={product_id} AND creator_creator_id={creator_id}"
             result = con.execute(query).fetchone()
             exists = result and result[0] > 0
             con.close()
@@ -273,7 +260,7 @@ def get_match_list(request):
             return JsonResponse({'code': 400, 'message': '数据集不存在', 'data': {}}, status=400)
         # 拼接Parquet文件路径
         user_dir = os.path.join(LOCAL_DATA_DIR, str(user.id))
-        dataset_dir = os.path.join(user_dir, str(dataset.id))
+        dataset_dir = os.path.join(user_dir, str(dataset.id), 'datasets')
         parquet_path = os.path.join(dataset_dir, f"{dataset.id}.parquet")
         if not os.path.exists(parquet_path):
             return JsonResponse({'code': 200, 'message': '暂无数据', 'data': {'total': 0, 'matches': []}})
@@ -325,7 +312,7 @@ def remove_data_from_dataset(request):
         except Dataset.DoesNotExist:
             return JsonResponse({'code': 400, 'message': '数据集不存在', 'data': {}}, status=400)
             
-        dataset_dir = os.path.join(LOCAL_DATA_DIR, str(dataset.user.id), str(dataset.id))
+        dataset_dir = os.path.join(LOCAL_DATA_DIR, str(dataset.user.id), str(dataset.id), 'datasets')
         parquet_path = os.path.join(dataset_dir, f"{dataset.id}.parquet")
         
         if not os.path.exists(parquet_path):
@@ -352,6 +339,58 @@ def remove_data_from_dataset(request):
             return JsonResponse({'code': 500, 'message': f'删除数据时发生错误: {str(e)}', 'data': {}}, status=500)
             
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
+
+@csrf_exempt
+def export_dataset_to_jsonl(request):
+    """将parquet文件内容导出为指令微调所需的jsonl格式，并写入data.json文件"""
+    if request.method == 'GET':
+        user_id = request.GET.get('user_id')
+        dataset_id = request.GET.get('dataset_id')
+        if not user_id or not dataset_id:
+            return JsonResponse({'code': 400, 'message': '缺少user_id或dataset_id参数', 'data': {}}, status=400)
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}}, status=400)
+        try:
+            dataset = Dataset.objects.get(id=dataset_id, user=user)
+        except Dataset.DoesNotExist:
+            return JsonResponse({'code': 400, 'message': '数据集不存在', 'data': {}}, status=400)
+        user_dir = os.path.join(LOCAL_DATA_DIR, str(user.id))
+        dataset_dir = os.path.join(user_dir, str(dataset.id), 'datasets')
+        parquet_path = os.path.join(dataset_dir, f"{dataset.id}.parquet")
+        json_path = os.path.join(dataset_dir, "data.json")
+        if not os.path.exists(parquet_path):
+            return JsonResponse({'code': 400, 'message': '数据文件不存在', 'data': {}}, status=400)
+        try:
+            df = pd.read_parquet(parquet_path)
+        except Exception as e:
+            return JsonResponse({'code': 500, 'message': f'Parquet文件读取失败: {str(e)}', 'data': {}})
+        # 构造jsonl内容
+        lines = []
+        for _, row in df.iterrows():
+            # prompt作为system内容
+            prompt = row.get('prompt', '')
+            # 组装user内容
+            user_content = []
+            for k, v in row.items():
+                if k not in ['is_matched', 'prompt', 'create_time']:
+                    user_content.append(f"{k}：{v}")
+            user_content_str = '，'.join(user_content)
+            messages = [
+                {"role": "system", "content": prompt},
+                {"role": "user", "content": user_content_str},
+            ]
+            assistant_content = str(row.get('is_matched', ''))
+            messages.append({"role": "assistant", "content": assistant_content})
+            lines.append(json.dumps({"messages": messages}, ensure_ascii=False))
+        # 写入data.json文件
+        with open(json_path, 'w', encoding='utf-8') as f:
+            for line in lines:
+                f.write(line + '\n')
+        return JsonResponse({'code': 200, 'message': '导出成功', 'data': {'json_path': json_path}})
+    return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
+
 
 
 
@@ -604,6 +643,8 @@ def get_user_datasets(request):
         return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}})
     datasets = Dataset.objects.filter(user=user)
     return JsonResponse({'datasets': list(datasets.values())})
+
+
 
 
 
