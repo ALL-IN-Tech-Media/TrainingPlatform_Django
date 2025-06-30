@@ -10,7 +10,9 @@ import json
 from accounts.models import User
 from datasets.models import Dataset
 from django.db import transaction
-
+import os
+import shutil
+from datasets.config import LOCAL_DATA_DIR
 
 # Create your views here.
 @csrf_exempt  # 仅在开发时使用，生产环境中请使用更安全的方式
@@ -73,8 +75,8 @@ def create_training_task(request):
         )
 
         try:
-            training_task.save()
             with transaction.atomic():
+                training_task.save()
                 training_id = training_task.id
 
                 # 调用Flask创建训练任务
@@ -91,7 +93,7 @@ def create_training_task(request):
                     'gpu': gpu
                 })
                 # 可以根据 response 判断 Flask 是否成功
-                if response.status_code != 200:
+                if response.json().get('code') != 200:
                     raise Exception(f"Flask任务创建失败: {response.json().get('message')}")
 
             # 只有数据库和Flask都成功才会走到这里
@@ -127,7 +129,7 @@ def get_datasets_training_tasks(request):
         return JsonResponse({'code': 405, 'message': 'Invalid request method', 'data': {}}, status=405)    
     
 @csrf_exempt  # 仅在开发时使用，生产环境中请使用更安全的方式
-def delete_project_training_task(request):
+def delete_training_task(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
@@ -135,12 +137,27 @@ def delete_project_training_task(request):
             return JsonResponse({'code': 400, 'message': '请求体不是有效的JSON', 'data': {}}, status=400)
         
         training_id = data.get('training_id')
+        user_id = data.get('user_id')
+        dataset_id = data.get('dataset_id')
+
+        try:
+            training = TrainingModel.objects.get(id=training_id)
+        except TrainingModel.DoesNotExist:
+            return JsonResponse({'code': 404, 'message': '训练任务不存在', 'data': {}}, status=404)
+        
+        if training.dataset_id != int(dataset_id):
+            return JsonResponse({'code': 400, 'message': '该训练任务未使用此数据集', 'data': {}}, status=400)
 
         # 调用Flask停止当前的ray进程
         ####### 记得做一个连通性测试，防止卡死(也就是前台点击了没有反应)
         response = requests.get(f'{FLASK_API}/stop_training_ray_task', json={
             'training_id': training_id
         })
+
+        # 删除本地磁盘数据集文件夹
+        save_model_dir = os.path.join(LOCAL_DATA_DIR, str(user_id), str(dataset_id), 'save_models', str(training_id))
+        if os.path.exists(save_model_dir):
+            shutil.rmtree(save_model_dir)
         
         # 删除与训练任务相关的所有训练记录
         TrainingEpochModel.objects.filter(training_model__id=training_id).delete()
@@ -205,47 +222,44 @@ def insert_training_epoch_loss(request):
     except Exception as e:
         return JsonResponse({'code': 500, 'message': str(e), 'data': {}}, status=500)
     
-# @csrf_exempt  # 仅在开发时使用，生产环境中请使用更安全的方式
-# @api_view(['GET'])
-# def get_training_epoch_data(request):
-#     training_id = request.GET.get('training_id')  # 获取请求中的 training_id
+@csrf_exempt  # 仅在开发时使用，生产环境中请使用更安全的方式
+@api_view(['GET'])
+def get_training_epoch_loss(request):
+    training_id = request.GET.get('training_id')  # 获取请求中的 training_id
 
-#     if not training_id:
-#         return JsonResponse({'success': False, 'message': '缺少 training_id'}, status=400)
+    if not training_id:
+        return JsonResponse({'code': 400, 'message': '缺少 training_id', 'data': {}}, status=400)
 
-#     try:
-#         # 查找所有与 training_id 相关的 TrainingEpochModel 实例，并按 epoch_number 排序
-#         epochs = TrainingEpochModel.objects.filter(training_model__id=training_id).order_by('epoch_number')
+    try:
+        # 查找所有与 training_id 相关的 TrainingEpochModel 实例，并按 epoch_number 排序
+        epochs = TrainingEpochModel.objects.filter(training_model__id=training_id).order_by('epoch_number')
 
-#         # 将查询结果转换为字典列表
-#         epoch_data = list(epochs.values('id', 'epoch_number', 'mAP50', 'mAP95', 'precision', 'recall', 'create_time'))
-#         print(epoch_data)
+        # 将查询结果转换为字典列表
+        epoch_data = list(epochs.values('id', 'epoch_number', 'train_loss', 'val_loss', 'create_time'))
+        print(epoch_data)
 
-#         return JsonResponse({'success': True, 'epochs': epoch_data})
-#     except Exception as e:
-#         return JsonResponse({'success': False, 'message': str(e)}, status=500)
+        return JsonResponse({'code': 200, 'message': '获取训练轮次数据成功', 'data': {'epochs': epoch_data}})
+    except Exception as e:
+        return JsonResponse({'code': 500, 'message': str(e), 'data': {}}, status=500)
     
-# @csrf_exempt  # 仅在开发时使用，生产环境中请使用更安全的方式
-# @api_view(['GET'])
-# def get_curr_epoch_data(request):
-#     training_id = request.GET.get('training_id')
-#     print(training_id)
+@csrf_exempt  # 仅在开发时使用，生产环境中请使用更安全的方式
+@api_view(['GET'])
+def get_curr_epoch_loss(request):
+    training_id = request.GET.get('training_id')
+    print(training_id)
     
-#     # 获取当前 training_id 最新的 epoch 数据
-#     latest_epoch_data = TrainingEpochModel.get_latest_epoch(training_id)
+    # 获取当前 training_id 最新的 epoch 数据
+    latest_epoch_data = TrainingEpochModel.get_latest_epoch(training_id)
     
-#     if latest_epoch_data:
-#         # 将数据序列化为字典形式
-#         data = {
-#             'id': latest_epoch_data.id,
-#             'epoch_number': latest_epoch_data.epoch_number,
-#             'mAP50': latest_epoch_data.mAP50,
-#             'mAP95': latest_epoch_data.mAP95,
-#             'precision': latest_epoch_data.precision,
-#             'recall': latest_epoch_data.recall,
-#             'create_time': latest_epoch_data.create_time,
-#         }
-#         return Response({'success': True, 'data': data})
-#     else:
-#         return Response({'success': False, 'error': 'No data found for the given training_id.'}, status=404)
-    
+    if latest_epoch_data:
+        # 将数据序列化为字典形式
+        data = {
+            'id': latest_epoch_data.id,
+            'epoch_number': latest_epoch_data.epoch_number,
+            'train_loss': latest_epoch_data.train_loss,
+            'val_loss': latest_epoch_data.val_loss,
+            'create_time': latest_epoch_data.create_time,
+        }
+        return JsonResponse({'code': 200, 'message': '获取当前训练轮次数据成功', 'data': data})
+    else:
+        return JsonResponse({'code': 404, 'message': 'No data found for the given training_id.', 'data': {}}, status=404)
