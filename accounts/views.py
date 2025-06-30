@@ -31,11 +31,8 @@ def login(request):
             'message': "用户不存在"
         }, status=status.HTTP_404_NOT_FOUND)
 
-    print(f"找到用户: {user.username}")  # 这里打印找到的用户名
-
     # 直接比较明文密码
     if user.password == password:
-        print("密码验证成功")
         
         # 生成 token
         token = generate_token()
@@ -49,17 +46,17 @@ def login(request):
             defaults={'token': token, 'expires_at': expires_at}
         )
 
-        if created:
-            print("创建新的 token")
-        else:
-            print("更新现有的 token")
-
         return Response({
+            'code': 200,
+            'data': {
             'success': True,
             'message': "登录成功",
             'token': token,
             'username': user.username,
-            'email': user.email
+            'email': user.email,
+            'user_id': user.id
+            }, 
+            'message': "登录成功"
         }, status=status.HTTP_200_OK)
     else:
         print("密码验证失败")
@@ -85,11 +82,11 @@ def register(request):
         error_message = str(e)  # 获取异常信息
 
     if success:
-        return JsonResponse({'success': True, 'message': "注册成功"})
+        return JsonResponse({'code': 200, 'data': {}, 'message': "注册成功"})
     else:
         if "Duplicate entry" in error_message:
-            return JsonResponse({'success': False, 'message': "邮箱已被注册"})
-        return JsonResponse({'success': False, 'message': "注册失败"})
+            return JsonResponse({'code': 400, 'data': {}, 'message': "邮箱已被注册"})
+        return JsonResponse({'code': 400, 'data': {}, 'message': "程序异常，注册失败"})
 
 @csrf_exempt
 @api_view(['GET'])
@@ -111,6 +108,8 @@ def get_user_info(request):
         # 检查 token 是否过期
         if user_token.expires_at < timezone.now():
             return Response({
+                'code': 401,
+                'data': {},
                 'success': False,
                 'message': "Token 已过期"
             }, status=401)
@@ -119,14 +118,19 @@ def get_user_info(request):
         user = user_token.user  # 通过 token 获取用户对象
 
         return Response({
-            'success': True,
-            'username': user.username,
-            'email': user.email
+            'code': 200,
+            'data': {
+                'success': True,
+                'username': user.username,
+                'email': user.email
+            },
+            'message': "获取用户信息成功"
         }, status=200)
 
     except UserToken.DoesNotExist:
         return Response({
-            'success': False,
+            'code': 401,
+            'data': {},
             'message': "无效的 token"
         }, status=401)
 
