@@ -85,7 +85,7 @@ def create_dataset(request):
 
 @csrf_exempt
 def add_data_to_dataset(request):
-    """根据传入的product_id和creator_id插入一条CreatorProductMatch记录，统一返回格式"""
+    """根据传入的product_id和creator_id插入一条CreatorProductMatch记录，直接写入data.jsonl，统一返回格式"""
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
@@ -97,32 +97,24 @@ def add_data_to_dataset(request):
         prompt = data.get('prompt')
         dataset_id = data.get('dataset_id')
         user_id = data.get('user_id')
-        if not product_id or not creator_id or not dataset_id or not user_id or not prompt:
-            return JsonResponse({'code': 400, 'message': '缺少product_id或creator_id或dataset_id或user_id或prompt参数', 'data': {}}, status=400)
+        if not product_id or not creator_id or not dataset_id or not user_id or prompt is None:
+            return JsonResponse({'code': 400, 'message': '缺少product_id或creator_id或dataset_id或user_id或prompt参数', 'data': {}})
         try:
             product = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
             return JsonResponse({'code': 400, 'message': '产品不存在', 'data': {}}, status=400)
-        
-        # 用户存在性校验
         try:
             user = User.objects.get(id=user_id)
         except User.DoesNotExist:
             return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}}, status=400)
-        
         try:
             creator = CreatorProfile.objects.get(id=creator_id)
         except CreatorProfile.DoesNotExist:
             return JsonResponse({'code': 400, 'message': '达人不存在', 'data': {}}, status=400)
-
         try:
             dataset = Dataset.objects.get(id=dataset_id, user_id=user_id)
         except Dataset.DoesNotExist:
             return JsonResponse({'code': 400, 'message': '数据集不存在', 'data': {}}, status=400)
-        
-        user_dir = os.path.join(LOCAL_DATA_DIR, str(dataset.user.id))
-        dataset_dir = os.path.join(user_dir, str(dataset.id), 'datasets')
-        parquet_path = os.path.join(dataset_dir, f"{dataset.id}.parquet")
 
         # 组装json数据
         def clean_filefields(d):
@@ -130,39 +122,35 @@ def add_data_to_dataset(request):
                 if isinstance(v, ImageFieldFile):
                     d[k] = None
             return d
-
         creator_dict = model_to_dict(creator)
         product_dict = model_to_dict(product)
         creator_dict = clean_filefields(creator_dict)
         product_dict = clean_filefields(product_dict)
-        # 字段重命名
         creator_dict['creator_id'] = creator_dict.pop('id')
         product_dict['product_id'] = product_dict.pop('id')
-        # 字段加前缀
         creator_prefixed = {f'creator_{k}': v for k, v in creator_dict.items()}
         product_prefixed = {f'product_{k}': v for k, v in product_dict.items()}
         row = {**creator_prefixed, **product_prefixed, 'is_matched': is_matched, 'prompt': prompt, 'create_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-        
-        if not os.path.exists(parquet_path):
-            # 文件不存在，直接创建新文件并写入当前数据
-            df = pd.DataFrame([row])
-            df.to_parquet(parquet_path)
-            return JsonResponse({'code': 200, 'message': '匹配关系创建成功', 'data': {}})
-        else:
-            # 文件存在，检查是否已包含该数据
-            con = duckdb.connect()
-            query = f"SELECT COUNT(*) FROM read_parquet('{parquet_path}') WHERE product_product_id={product_id} AND creator_creator_id={creator_id}"
-            result = con.execute(query).fetchone()
-            exists = result and result[0] > 0
-            con.close()
-            if exists:
-                return JsonResponse({'code': 400, 'message': '该达人和产品的匹配已存在', 'data': {}})
-            # 合并数据
-            df = pd.read_parquet(parquet_path)
-            df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
-            df.to_parquet(parquet_path)
-            return JsonResponse({'code': 200, 'message': '匹配关系创建成功', 'data': {}})
-    return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
+
+        # 组装user内容
+        user_content = []
+        for k, v in row.items():
+            if k not in ['is_matched', 'prompt', 'create_time']:
+                user_content.append(f"{k}:{v}")
+        user_content_str = ','.join(user_content)
+        messages = [
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": user_content_str},
+            {"role": "assistant", "content": str(is_matched)}
+        ]
+        # 写入data.jsonl
+        save_dir = os.path.join(LOCAL_DATA_DIR, str(user.id), str(dataset.id), 'datasets')
+        os.makedirs(save_dir, exist_ok=True)
+        jsonl_path = os.path.join(save_dir, "data.json")
+        with open(jsonl_path, 'a', encoding='utf-8') as f:
+            f.write(json.dumps({"messages": messages}, ensure_ascii=False) + '\n')
+        return JsonResponse({'code': 200, 'message': '数据添加成功', 'data': {}})
+    return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}})
 
 @csrf_exempt
 def get_dataset_list(request):
@@ -375,8 +363,8 @@ def export_dataset_to_jsonl(request):
             user_content = []
             for k, v in row.items():
                 if k not in ['is_matched', 'prompt', 'create_time']:
-                    user_content.append(f"{k}：{v}")
-            user_content_str = '，'.join(user_content)
+                    user_content.append(f"{k}:{v}")
+            user_content_str = ','.join(user_content)
             messages = [
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": user_content_str},
@@ -390,6 +378,85 @@ def export_dataset_to_jsonl(request):
                 f.write(line + '\n')
         return JsonResponse({'code': 200, 'message': '导出成功', 'data': {'json_path': json_path}})
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
+
+@csrf_exempt
+def upload_dataset(request):
+    """
+    接收用户上传的json或jsonl文件并保存到指定目录，文件名为<dataset_id>.jsonl
+    """
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        dataset_id = request.POST.get('dataset_id')
+        if not user_id or not dataset_id:
+            return JsonResponse({'code': 400, 'message': '缺少user_id或dataset_id参数', 'data': {}})
+        if 'file' not in request.FILES:
+            return JsonResponse({'code': 400, 'message': '未检测到上传文件', 'data': {}})
+        upload_file = request.FILES['file']
+        # 检查文件类型
+        if not (upload_file.name.endswith('.json') or upload_file.name.endswith('.jsonl')):
+            return JsonResponse({'code': 400, 'message': '只支持json或jsonl文件上传', 'data': {}})
+        # 构造保存路径，文件名为<dataset_id>.jsonl
+        save_dir = os.path.join(LOCAL_DATA_DIR, str(user_id), str(dataset_id), 'datasets')
+        os.makedirs(save_dir, exist_ok=True)
+        save_path = os.path.join(save_dir, f"data.json")
+        # 保存文件
+        with open(save_path, 'wb') as f:
+            for chunk in upload_file.chunks():
+                f.write(chunk)
+        return JsonResponse({'code': 200, 'message': '文件上传成功', 'data': {'file_path': save_path}})
+    return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}})
+
+@csrf_exempt
+def json_to_parquet(request):
+    """
+    将指定数据集目录下的data.json内容转换为parquet文件，parquet文件名为<dataset_id>.parquet。
+    每行存system、user、assistant三列，分别为对应role的content。
+    需要参数：user_id, dataset_id
+    """
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+        except Exception:
+            return JsonResponse({'code': 400, 'message': '请求体不是有效的JSON', 'data': {}}, status=400)
+        user_id = data.get('user_id')
+        dataset_id = data.get('dataset_id')
+        if not user_id or not dataset_id:
+            return JsonResponse({'code': 400, 'message': '缺少user_id或dataset_id参数', 'data': {}})
+        # 构造路径
+        save_dir = os.path.join(LOCAL_DATA_DIR, str(user_id), str(dataset_id), 'datasets')
+        json_path = os.path.join(save_dir, 'data.json')
+        if not os.path.exists(json_path):
+            return JsonResponse({'code': 400, 'message': 'data.json文件不存在', 'data': {}})
+        rows = []
+        try:
+            with open(json_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    obj = json.loads(line)
+                    messages = obj.get('messages', [])
+                    system = user = assistant = ""
+                    for m in messages:
+                        if m.get('role') == 'system':
+                            system = m.get('content', '')
+                        elif m.get('role') == 'user':
+                            user = m.get('content', '')
+                        elif m.get('role') == 'assistant':
+                            assistant = m.get('content', '')
+                    rows.append({'system': system, 'user': user, 'assistant': assistant})
+        except Exception as e:
+            return JsonResponse({'code': 500, 'message': f'解析data.json失败: {str(e)}', 'data': {}})
+        if not rows:
+            return JsonResponse({'code': 400, 'message': 'data.json无有效数据', 'data': {}})
+        # 转为DataFrame并写入parquet
+        df = pd.DataFrame(rows)
+        parquet_path = os.path.join(save_dir, f"{dataset_id}.parquet")
+        try:
+            df.to_parquet(parquet_path)
+        except Exception as e:
+            return JsonResponse({'code': 500, 'message': f'写入parquet失败: {str(e)}', 'data': {}})
+        return JsonResponse({'code': 200, 'message': '转换成功', 'data': {'parquet_path': parquet_path}})
+    return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}})
+
+
 
 
 
@@ -643,6 +710,8 @@ def get_user_datasets(request):
         return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}})
     datasets = Dataset.objects.filter(user=user)
     return JsonResponse({'datasets': list(datasets.values())})
+
+
 
 
 
