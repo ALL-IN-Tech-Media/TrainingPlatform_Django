@@ -230,13 +230,18 @@ def get_training_epoch_loss(request):
     if not training_id:
         return JsonResponse({'code': 400, 'message': '缺少 training_id', 'data': {}}, status=400)
 
+    # 先判断训练任务是否存在
+    try:
+        training = TrainingModel.objects.get(id=training_id)
+    except TrainingModel.DoesNotExist:
+        return JsonResponse({'code': 404, 'message': '训练任务不存在', 'data': {}}, status=404)
+
     try:
         # 查找所有与 training_id 相关的 TrainingEpochModel 实例，并按 epoch_number 排序
-        epochs = TrainingEpochModel.objects.filter(training_model__id=training_id).order_by('epoch_number')
+        epochs = TrainingEpochModel.objects.filter(training_model=training).order_by('epoch_number')
 
         # 将查询结果转换为字典列表
         epoch_data = list(epochs.values('id', 'epoch_number', 'train_loss', 'val_loss', 'create_time'))
-        print(epoch_data)
 
         return JsonResponse({'code': 200, 'message': '获取训练轮次数据成功', 'data': {'epochs': epoch_data}})
     except Exception as e:
@@ -246,20 +251,28 @@ def get_training_epoch_loss(request):
 @api_view(['GET'])
 def get_curr_epoch_loss(request):
     training_id = request.GET.get('training_id')
-    print(training_id)
     
-    # 获取当前 training_id 最新的 epoch 数据
-    latest_epoch_data = TrainingEpochModel.get_latest_epoch(training_id)
-    
-    if latest_epoch_data:
-        # 将数据序列化为字典形式
-        data = {
-            'id': latest_epoch_data.id,
-            'epoch_number': latest_epoch_data.epoch_number,
-            'train_loss': latest_epoch_data.train_loss,
-            'val_loss': latest_epoch_data.val_loss,
-            'create_time': latest_epoch_data.create_time,
-        }
-        return JsonResponse({'code': 200, 'message': '获取当前训练轮次数据成功', 'data': data})
-    else:
-        return JsonResponse({'code': 404, 'message': 'No data found for the given training_id.', 'data': {}}, status=404)
+    # 先判断训练任务是否存在
+    try:
+        training = TrainingModel.objects.get(id=training_id)
+    except TrainingModel.DoesNotExist:
+        return JsonResponse({'code': 404, 'message': '训练任务不存在', 'data': {}}, status=404)
+
+    try:
+        # 获取当前 training_id 最新的 epoch 数据
+        latest_epoch_data = TrainingEpochModel.objects.filter(training_model=training).order_by('-epoch_number').first()
+
+        if latest_epoch_data:
+            # 将数据序列化为字典形式
+            data = {
+                'id': latest_epoch_data.id,
+                'epoch_number': latest_epoch_data.epoch_number,
+                'train_loss': latest_epoch_data.train_loss,
+                'val_loss': latest_epoch_data.val_loss,
+                'create_time': latest_epoch_data.create_time,
+            }
+            return JsonResponse({'code': 200, 'message': '获取当前训练轮次数据成功', 'data': data})
+        else:
+            return JsonResponse({'code': 404, 'message': 'No data found for the given training_id.', 'data': {}}, status=404)
+    except Exception as e:
+        return JsonResponse({'code': 500, 'message': str(e), 'data': {}}, status=500)
