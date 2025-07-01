@@ -301,7 +301,7 @@ class Dataset(models.Model):
     # 数据集的类别，使用 JSONField 存储类别信息
     categories = models.JSONField(default=list)  # 默认值为一个空列表
 
-    # 该数据集是否上传至minio的一个标识
+    # 该数据集是否已经有数据
     is_upload = models.BooleanField(default=False)  # 表示数据集是否已上传，默认为 False
 
     def update_is_upload(self, upload_status):
