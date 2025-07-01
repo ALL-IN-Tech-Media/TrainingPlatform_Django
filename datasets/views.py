@@ -389,6 +389,16 @@ def upload_dataset(request):
         dataset_id = request.POST.get('dataset_id')
         if not user_id or not dataset_id:
             return JsonResponse({'code': 400, 'message': '缺少user_id或dataset_id参数', 'data': {}})
+        # 校验用户是否存在
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}})
+        # 校验数据集是否存在且属于该用户
+        try:
+            dataset = Dataset.objects.get(id=dataset_id, user=user)
+        except Dataset.DoesNotExist:
+            return JsonResponse({'code': 400, 'message': '数据集不存在或不属于该用户', 'data': {}})
         if 'file' not in request.FILES:
             return JsonResponse({'code': 400, 'message': '未检测到上传文件', 'data': {}})
         upload_file = request.FILES['file']
@@ -403,6 +413,8 @@ def upload_dataset(request):
         with open(save_path, 'wb') as f:
             for chunk in upload_file.chunks():
                 f.write(chunk)
+        # 上传成功后，设置is_upload为True
+        dataset.update_is_upload(True)
         return JsonResponse({'code': 200, 'message': '文件上传成功', 'data': {'file_path': save_path}})
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}})
 
