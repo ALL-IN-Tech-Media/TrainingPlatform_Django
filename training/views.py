@@ -123,8 +123,23 @@ def get_datasets_training_tasks(request):
             return JsonResponse({'code': 400, 'message': '该用户下不存在此数据集', 'data': {}}, status=400)
 
         tasks = TrainingModel.objects.filter(user=user, dataset=dataset)
+        task_list = list(tasks.values())
 
-        return JsonResponse({'code': 200, 'message': '获取训练任务成功', 'data': {'tasks': list(tasks.values())}})
+        # 为每个任务附加最新的 epoch loss 信息
+        for task in task_list:
+            latest_epoch = TrainingEpochModel.objects.filter(training_model_id=task['id']).order_by('-epoch_number').first()
+            if latest_epoch:
+                task['latest_epoch'] = {
+                    'id': latest_epoch.id,
+                    'current_epoch': latest_epoch.epoch_number,
+                    'train_loss': latest_epoch.train_loss,
+                    'val_loss': latest_epoch.val_loss,
+                    'create_time': latest_epoch.create_time,
+                }
+            else:
+                task['latest_epoch'] = None
+
+        return JsonResponse({'code': 200, 'message': '获取训练任务成功', 'data': {'tasks': task_list}})
     else:
         return JsonResponse({'code': 405, 'message': 'Invalid request method', 'data': {}}, status=405)    
     
@@ -266,7 +281,7 @@ def get_curr_epoch_loss(request):
             # 将数据序列化为字典形式
             data = {
                 'id': latest_epoch_data.id,
-                'epoch_number': latest_epoch_data.epoch_number,
+                'current_epoch': latest_epoch_data.epoch_number,
                 'train_loss': latest_epoch_data.train_loss,
                 'val_loss': latest_epoch_data.val_loss,
                 'create_time': latest_epoch_data.create_time,
