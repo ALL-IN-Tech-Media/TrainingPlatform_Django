@@ -14,6 +14,7 @@ urlpatterns = [
     path("get_minio_links/", views.get_minio_links, name="get_minio_links"),
     path("get_dataset_is_upload/", views.get_dataset_is_upload, name="get_dataset_is_upload"),
     path("upload_dataset/", views.upload_dataset, name="upload_dataset"),
+    path("rename_dataset/", views.rename_dataset, name="rename_dataset"),
 
 
 
