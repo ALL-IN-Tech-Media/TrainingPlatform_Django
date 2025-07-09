@@ -284,7 +284,10 @@ class Dataset(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     # 任务类型，最长50个字符，不能为空
-    task_type = models.CharField(max_length=16)
+    task_type = models.CharField(max_length=64)
+
+    # 数据集格式
+    data_format = models.CharField(max_length=64, default="")
 
     # 数据集大小，使用BigIntegerField来表示较大的整数
     size = models.CharField(max_length=64)
