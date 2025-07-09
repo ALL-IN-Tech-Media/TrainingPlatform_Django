@@ -1,15 +1,17 @@
 import os
 import shutil
 import yaml
+import json
 
 def is_image_file(filename):
-    # 检查文件扩展名是否为常见的图片格式
+    
     valid_image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff'}
     _, ext = os.path.splitext(filename)
     return ext.lower() in valid_image_extensions
 
+# 检查文件扩展名是否为XML格式
 def is_xml_file(filename):
-    # 检查文件扩展名是否为XML格式
+    
     _, ext = os.path.splitext(filename)
     return ext.lower() == '.xml' or ext.lower() == '.txt'
 
@@ -23,8 +25,9 @@ def check_single_yaml_file(folder_path):
     # 检查是否只有一个.yaml文件
     return len(yaml_files) == 1, yaml_files
 
+# 遍历文件夹及其子文件夹，删除所有.DS_Store文件
 def remove_ds_store_files(folder_path):
-    # 遍历文件夹及其子文件夹，删除所有.DS_Store文件
+    
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             if file == '.DS_Store':
@@ -96,6 +99,114 @@ def get_categories(yaml_path):
         result = list(names.values())
         return result
     else: return []
+
+# 从本地检查json文件是否是chat格式
+def validate_chat_format(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            try:
+                obj = json.loads(line)
+                if 'messages' not in obj or not isinstance(obj['messages'], list):
+                    return False, '每行必须包含messages字段且为list'
+                for msg in obj['messages']:
+                    if 'role' not in msg or 'content' not in msg:
+                        return False, 'messages中的每个元素必须有role和content'
+            except Exception as e:
+                return False, f'JSON解析失败: {e}'
+    return True, ''
+
+# 从本地检查json文件是否是instruct格式
+def validate_instruct_format(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            return False, 'Instruct格式必须是一个数组'
+        for item in data:
+            if not all(k in item for k in ['instruction', 'input', 'output']):
+                return False, '每个元素必须有instruction、input、output字段'
+    except Exception as e:
+        return False, f'JSON解析失败: {e}'
+    return True, ''
+
+# 在线检查json文件是否是chat格式
+def validate_chat_format_fileobj(fileobj):
+    fileobj.seek(0)
+    for line in fileobj:
+        try:
+            obj = json.loads(line)
+            if 'messages' not in obj or not isinstance(obj['messages'], list):
+                return False, '每行必须包含messages字段且为list'
+            for msg in obj['messages']:
+                if 'role' not in msg or 'content' not in msg:
+                    return False, 'messages中的每个元素必须有role和content'
+        except Exception as e:
+            return False, f'JSON解析失败: {e}'
+    fileobj.seek(0)
+    return True, ''
+
+# 在线检查json文件是否是instruct格式
+def validate_instruct_format_fileobj(fileobj):
+    """
+    校验上传文件对象是否为Instruct格式（JSON数组，每个元素有instruction、input、output字段）
+    :param fileobj: Django上传的文件对象
+    :return: (bool, str) 校验结果和错误信息
+    """
+    try:
+        fileobj.seek(0)
+        data = json.load(fileobj)
+        if not isinstance(data, list):
+            return False, 'Instruct格式必须是一个数组'
+        for item in data:
+            if not all(k in item for k in ['instruction', 'input', 'output']):
+                return False, '每个元素必须有instruction、input、output字段'
+    except Exception as e:
+        return False, f'JSON解析失败: {e}'
+    finally:
+        fileobj.seek(0)  # 复位，便于后续保存
+    return True, ''
+
+
+# 从本地检查json文件是否是scored_pair格式
+def validate_scored_pair_format(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            try:
+                obj = json.loads(line)
+                if 'sentence1' not in obj or 'sentence2' not in obj or 'score' not in obj:
+                    return False, '每行必须包含sentence1、sentence2和score字段'
+            except Exception as e:
+                return False, f'JSON解析失败: {e}'
+    return True, ''
+
+# 在线检查json文件是否是scored_pair格式
+def validate_scored_pair_format_fileobj(fileobj):
+    fileobj.seek(0)
+    for line in fileobj:
+        try:
+            obj = json.loads(line)
+            if 'sentence1' not in obj or 'sentence2' not in obj or 'score' not in obj:
+                return False, '每行必须包含sentence1、sentence2和score字段'
+        except Exception as e:
+            return False, f'JSON解析失败: {e}'
+    fileobj.seek(0)
+    return True, ''
+
+# 从本地检查json文件是否是contrastive_triplet格式
+def validate_contrastive_triplet_format(file_path):
+    return False, '暂时不支持该数据格式的训练'
+
+# 在线检查json文件是否是contrastive_triplet格式
+def validate_contrastive_triplet_format_fileobj(fileobj):
+    return False, '暂时不支持该数据格式的训练'
+
+# 从本地检查json文件是否是labeled_sentence格式
+def validate_labeled_sentence_format(file_path):
+    return False, '暂时不支持该数据格式的训练'
+
+# 在线检查json文件是否是labeled_sentence格式
+def validate_labeled_sentence_format_fileobj(fileobj):
+    return False, '暂时不支持该数据格式的训练'
 
 # 使用示例
 if __name__ == "__main__":
