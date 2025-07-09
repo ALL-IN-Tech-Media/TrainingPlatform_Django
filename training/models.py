@@ -25,6 +25,8 @@ class TrainingModel(models.Model):
     max_length = models.IntegerField()
     create_time = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=16)
+    is_deploy = models.BooleanField(default=False)
+    is_monitor = models.BooleanField(default=False)
 
 
 
@@ -35,6 +37,7 @@ class TrainingEpochModel(models.Model):
     epoch_number = models.IntegerField()
     train_loss = models.FloatField()
     val_loss = models.FloatField()
+    
     create_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
