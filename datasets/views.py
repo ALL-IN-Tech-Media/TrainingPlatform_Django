@@ -10,7 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from .models import Dataset, Project, CreatorProfile, Product, CreatorProductMatch
-from .tool import check_directory_structure_detect, delete_temp_dir, get_categories
+from .tool import check_directory_structure_detect, delete_temp_dir, get_categories, validate_chat_format_fileobj, validate_instruct_format_fileobj, validate_scored_pair_format_fileobj, validate_contrastive_triplet_format_fileobj, validate_labeled_sentence_format_fileobj
 from .minio_tools import upload_to_minio, delete_from_minio, get_dataset_link
 from .config import TEMP_ROOT_DIR, LOCAL_IP, BUCKET_NAME, LOCAL_DATA_DIR
 from concurrent.futures import ThreadPoolExecutor
@@ -24,6 +24,7 @@ from datetime import datetime
 
 executor = ThreadPoolExecutor(max_workers=10)
 task_type_map = {'Detect':'Detection', 'Classify':'Classification'}
+data_format_map = {'TextGeneration':{'Chat':validate_chat_format_fileobj, 'Instruct':validate_instruct_format_fileobj}, 'Embedding':{'ScoredPair':validate_scored_pair_format_fileobj, 'ContrastiveTriplet':validate_contrastive_triplet_format_fileobj, 'LabeledSentence':validate_labeled_sentence_format_fileobj}}
 
 # Create your views here.
 @csrf_exempt
@@ -39,6 +40,7 @@ def create_dataset(request):
         name = data.get('name')
         user_id = data.get('user_id')
         task_type = data.get('task_type', '')
+        data_format = data.get('data_format', '')
         size = data.get('size', '')
         description = data.get('description', '')
         categories = data.get('categories', [])
@@ -62,6 +64,7 @@ def create_dataset(request):
                     name=name,
                     user=user,
                     task_type=task_type,
+                    data_format=data_format,
                     size=size,
                     description=description,
                     categories=categories
@@ -81,6 +84,33 @@ def create_dataset(request):
             return JsonResponse({'code': 500, 'message': f'创建数据集失败: {e}', 'data': {}}, status=500)
 
         return JsonResponse({'code': 200, 'message': '数据集创建成功', 'data': {'dataset_id': dataset.id}})
+    return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
+
+@csrf_exempt
+def rename_dataset(request):
+    """根据传入的用户id和数据集id重命名数据集，统一返回格式"""
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+        except Exception:
+            return JsonResponse({'code': 400, 'message': '请求体不是有效的JSON', 'data': {}}, status=400)
+        user_id = data.get('user_id')
+        dataset_id = data.get('dataset_id')
+        new_name = data.get('new_name')
+        if not user_id or not dataset_id or not new_name:
+            return JsonResponse({'code': 400, 'message': '缺少user_id或dataset_id或new_name参数', 'data': {}}, status=400)
+        
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}}, status=400)
+        try:
+            dataset = Dataset.objects.get(id=dataset_id, user=user)
+        except Dataset.DoesNotExist:
+            return JsonResponse({'code': 400, 'message': '数据集不存在', 'data': {}}, status=400)
+        dataset.name = new_name
+        dataset.save()
+        return JsonResponse({'code': 200, 'message': '数据集重命名成功', 'data': {}})
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
 
 @csrf_exempt
@@ -389,11 +419,13 @@ def upload_dataset(request):
         dataset_id = request.POST.get('dataset_id')
         if not user_id or not dataset_id:
             return JsonResponse({'code': 400, 'message': '缺少user_id或dataset_id参数', 'data': {}})
+        
         # 校验用户是否存在
         try:
             user = User.objects.get(id=user_id)
         except User.DoesNotExist:
             return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}})
+        
         # 校验数据集是否存在且属于该用户
         try:
             dataset = Dataset.objects.get(id=dataset_id, user=user)
@@ -402,9 +434,18 @@ def upload_dataset(request):
         if 'file' not in request.FILES:
             return JsonResponse({'code': 400, 'message': '未检测到上传文件', 'data': {}})
         upload_file = request.FILES['file']
+
+        data_format = dataset.data_format
+        task_type = dataset.task_type
+        if data_format in data_format_map[task_type]:
+            is_valid, error_msg = data_format_map[task_type][data_format](upload_file) 
+            if not is_valid:
+                return JsonResponse({'code': 400, 'message': f'文件格式错误: {error_msg}', 'data': {}})
+            
         # 检查文件类型
-        if not (upload_file.name.endswith('.json') or upload_file.name.endswith('.jsonl')):
-            return JsonResponse({'code': 400, 'message': '只支持json或jsonl文件上传', 'data': {}})
+        if not upload_file.name.endswith('.json'):
+            return JsonResponse({'code': 400, 'message': '只支持json文件上传', 'data': {}})
+        
         # 构造保存路径，文件名为<dataset_id>.jsonl
         save_dir = os.path.join(LOCAL_DATA_DIR, str(user_id), str(dataset_id), 'datasets')
         os.makedirs(save_dir, exist_ok=True)
