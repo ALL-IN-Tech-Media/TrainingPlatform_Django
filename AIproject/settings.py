@@ -43,10 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'neural_networks',
     'datasets',
     'training',
-    'api',
+    'models',
     'rest_framework',
     'corsheaders',
 ]
