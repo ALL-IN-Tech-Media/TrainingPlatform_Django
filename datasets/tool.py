@@ -147,24 +147,7 @@ def validate_chat_format_fileobj(fileobj):
 
 # 在线检查json文件是否是instruct格式
 def validate_instruct_format_fileobj(fileobj):
-    """
-    校验上传文件对象是否为Instruct格式（JSON数组，每个元素有instruction、input、output字段）
-    :param fileobj: Django上传的文件对象
-    :return: (bool, str) 校验结果和错误信息
-    """
-    try:
-        fileobj.seek(0)
-        data = json.load(fileobj)
-        if not isinstance(data, list):
-            return False, 'Instruct格式必须是一个数组'
-        for item in data:
-            if not all(k in item for k in ['instruction', 'input', 'output']):
-                return False, '每个元素必须有instruction、input、output字段'
-    except Exception as e:
-        return False, f'JSON解析失败: {e}'
-    finally:
-        fileobj.seek(0)  # 复位，便于后续保存
-    return True, ''
+    return False, '暂时不支持该数据格式的训练'
 
 
 # 从本地检查json文件是否是scored_pair格式
