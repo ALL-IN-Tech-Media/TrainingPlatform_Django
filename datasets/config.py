@@ -6,7 +6,7 @@ BUCKET_NAME = 'ai-data'
 
 MINIO_ACCESS_KEY = 'admin'
 MINIO_SECRET_KEY = 'liuchang630'
-
+FLASK_API = 'http://81.69.223.133:58096'
 
 # nlp新配置
 LOCAL_DATA_DIR = '/home/ooin/ooin_training/NLPData' # 用于存放nlp数据集
