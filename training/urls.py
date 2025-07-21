@@ -17,4 +17,5 @@ urlpatterns = [
     path("stop_resource_monitor/", views.stop_resource_monitor, name="stop_resource_monitor"),
     path("deploy_model/", views.deploy_model, name="deploy_model"),
     path("stop_deploy_model/", views.stop_deploy_model, name="stop_deploy_model"),
+    path("embedding_deploy_model/", views.embedding_deploy_model, name="embedding_deploy_model"),
 ]
