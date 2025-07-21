@@ -21,10 +21,12 @@ import pandas as pd
 import numpy as np
 from decimal import Decimal
 from datetime import datetime
+from training.models import TrainingModel
+from .config import FLASK_API
 
 executor = ThreadPoolExecutor(max_workers=10)
 task_type_map = {'Detect':'Detection', 'Classify':'Classification'}
-data_format_map = {'TextGeneration':{'Chat':validate_chat_format_fileobj, 'Instruct':validate_instruct_format_fileobj}, 'Embedding':{'ScoredPair':validate_scored_pair_format_fileobj, 'ContrastiveTriplet':validate_contrastive_triplet_format_fileobj, 'LabeledSentence':validate_labeled_sentence_format_fileobj}}
+data_format_map = {'Instruction':{'Chat':validate_chat_format_fileobj, 'Instruct':validate_instruct_format_fileobj}, 'Embedding':{'ScoredPair':validate_scored_pair_format_fileobj, 'ContrastiveTriplet':validate_contrastive_triplet_format_fileobj, 'LabeledSentence':validate_labeled_sentence_format_fileobj}}
 
 # Create your views here.
 @csrf_exempt
@@ -237,16 +239,32 @@ def delete_dataset_api(request):
             dataset = Dataset.objects.get(id=dataset_id, user=user)
         except Dataset.DoesNotExist:
             return JsonResponse({'code': 400, 'message': '数据集不存在', 'data': {}}, status=400)
-        
-        # 删除本地磁盘数据集文件夹
-        user_dir = os.path.join(LOCAL_DATA_DIR, str(user.id))
-        dataset_dir = os.path.join(user_dir, str(dataset.id))
-        if os.path.exists(dataset_dir):
-            shutil.rmtree(dataset_dir)
 
-        # 删除数据库中的数据集
-        dataset.delete()
-        return JsonResponse({'code': 200, 'message': '数据集删除成功', 'data': {}})
+    # 1. 查找所有未逻辑删除的训练任务
+    training_tasks = TrainingModel.objects.filter(dataset=dataset, is_delete=False)
+    for training in training_tasks:
+        # 调用Flask停止训练
+        try:
+            requests.get(f'{FLASK_API}/stop_training_ray_task', json={
+                'training_id': training.id
+            }, timeout=5)
+        except Exception as e:
+            # 你可以记录日志或忽略
+            print(f"停止训练任务{training.id}失败: {e}")
+        # 逻辑删除训练任务
+        training.is_delete = True
+        training.status = '已删除'
+        training.save()
+
+    # 2. 删除本地磁盘数据集文件夹
+    user_dir = os.path.join(LOCAL_DATA_DIR, str(user.id))
+    dataset_dir = os.path.join(user_dir, str(dataset.id))
+    if os.path.exists(dataset_dir):
+        shutil.rmtree(dataset_dir)
+
+    # 3. 删除数据库中的数据集
+    dataset.delete()
+    return JsonResponse({'code': 200, 'message': '数据集删除成功', 'data': {}})
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}}, status=400)
 
 @csrf_exempt
@@ -456,6 +474,65 @@ def upload_dataset(request):
                 f.write(chunk)
         # 上传成功后，设置is_upload为True
         dataset.update_is_upload(True)
+
+        ## 开始创建压缩文件
+        save_dir = os.path.join(LOCAL_DATA_DIR, str(user_id), str(dataset_id), 'datasets')
+        json_path = os.path.join(save_dir, 'data.json')
+        if not os.path.exists(json_path):
+            return JsonResponse({'code': 400, 'message': 'data.json文件不存在', 'data': {}})
+        rows = []
+        
+        try:
+            if data_format == "Chat":
+                rows = []
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        obj = json.loads(line)
+                        messages = obj.get('messages', [])
+                        system = user_msg = assistant = ""
+                        for m in messages:
+                            if m.get('role') == 'system':
+                                system = m.get('content', '')
+                            elif m.get('role') == 'user':
+                                user_msg = m.get('content', '')
+                            elif m.get('role') == 'assistant':
+                                assistant = m.get('content', '')
+                        rows.append({'system': system, 'user': user_msg, 'assistant': assistant})
+            elif data_format == "Instruct":
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                rows = []
+                for item in data:
+                    rows.append({
+                        'instruction': item.get('instruction', ''),
+                        'input': item.get('input', ''),
+                        'output': item.get('output', '')
+                    })
+            elif data_format == "ScoredPair":
+                rows = []
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        obj = json.loads(line)
+                        rows.append({
+                            'sentence1': obj.get('sentence1', ''),
+                            'sentence2': obj.get('sentence2', ''),
+                            'score': obj.get('score', None)
+                        })
+            else:
+                return JsonResponse({'code': 400, 'message': f'不支持的数据格式: {data_format}', 'data': {}})
+        except Exception as e:
+            return JsonResponse({'code': 500, 'message': f'解析data.json失败: {str(e)}', 'data': {}})
+
+        if not rows:
+            return JsonResponse({'code': 400, 'message': 'data.json无有效数据', 'data': {}})
+        # 转为DataFrame并写入parquet
+        df = pd.DataFrame(rows)
+        parquet_path = os.path.join(save_dir, f"{dataset_id}.parquet")
+        try:
+            df.to_parquet(parquet_path)
+        except Exception as e:
+            return JsonResponse({'code': 500, 'message': f'写入parquet失败: {str(e)}', 'data': {}})
+
         return JsonResponse({'code': 200, 'message': '文件上传成功', 'data': {'file_path': save_path}})
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}})
 
@@ -509,7 +586,39 @@ def json_to_parquet(request):
         return JsonResponse({'code': 200, 'message': '转换成功', 'data': {'parquet_path': parquet_path}})
     return JsonResponse({'code': 400, 'message': '请求方法错误', 'data': {}})
 
-
+@csrf_exempt
+def download_model_from_huggingface(request):
+    """
+    POST: {"user_id": ..., "model_name": ...}
+    校验用户存在，然后从huggingface下载模型到本地。
+    """
+    if request.method != 'POST':
+        return JsonResponse({'code': 405, 'message': '请求方法错误', 'data': {}}, status=405)
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+    except Exception:
+        return JsonResponse({'code': 400, 'message': '请求体不是有效的JSON', 'data': {}}, status=400)
+    user_id = data.get('user_id')
+    model_name = data.get('model_name')
+    if not user_id or not model_name:
+        return JsonResponse({'code': 400, 'message': '缺少user_id或model_name参数', 'data': {}}, status=400)
+    # 校验用户
+    from accounts.models import User
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        return JsonResponse({'code': 400, 'message': '用户不存在', 'data': {}}, status=400)
+    # 下载模型
+    try:
+        from huggingface_hub import snapshot_download
+        import os
+        # 你可以自定义保存路径
+        save_dir = os.path.join('/home/ooin/ooin_training/model_factory', str(user_id), model_name.replace('/', '__'))
+        os.makedirs(save_dir, exist_ok=True)
+        snapshot_download(repo_id=model_name, local_dir=save_dir, resume_download=True, local_dir_use_symlinks=False)
+        return JsonResponse({'code': 200, 'message': '模型下载成功', 'data': {'local_path': save_dir}})
+    except Exception as e:
+        return JsonResponse({'code': 500, 'message': f'模型下载失败: {e}', 'data': {}}, status=500)
 
 
 
