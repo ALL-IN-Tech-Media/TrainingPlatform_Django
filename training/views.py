@@ -18,7 +18,8 @@ from urllib.parse import urlparse
 
 status_dict = {
     1: '训练中',
-    2: '训练完成'
+    2: '训练完成',
+    3: '已删除'
 }
 
 @csrf_exempt  # 仅在开发时使用，生产环境中请使用更安全的方式
@@ -334,7 +335,7 @@ def get_datasets_training_tasks(request):
         
         # 判断 current_status 是否传递
         if current_status is None:
-            tasks = TrainingModel.objects.filter(user=user, dataset=dataset)
+            tasks = TrainingModel.objects.filter(user=user, dataset=dataset, is_delete=False)
         else:
             try:
                 current_status = int(current_status)
@@ -342,6 +343,7 @@ def get_datasets_training_tasks(request):
                 return JsonResponse({'code': 400, 'message': 'current_status 必须为整数', 'data': {}}, status=400)
             if current_status not in status_dict.keys():
                 return JsonResponse({'code': 400, 'message': 'current_status 参数不合法', 'data': {}}, status=400)
+            
             tasks = TrainingModel.objects.filter(user=user, dataset=dataset, status=status_dict[current_status])
 
         task_list = list(tasks.values())
@@ -359,6 +361,7 @@ def get_datasets_training_tasks(request):
                 }
             else:
                 task['latest_epoch'] = None
+            task['task_type'] = dataset.task_type
 
         return JsonResponse({'code': 200, 'message': '获取训练任务成功', 'data': {'tasks': task_list}})
     else:
@@ -395,15 +398,12 @@ def delete_training_task(request):
         if os.path.exists(save_model_dir):
             shutil.rmtree(save_model_dir)
         
-        # 删除与训练任务相关的所有训练记录
-        TrainingEpochModel.objects.filter(training_model__id=training_id).delete()
-        
-        task_deleted, _ = TrainingModel.objects.filter(id=training_id).delete()
+        # 逻辑删除：将is_delete设为True
+        training.is_delete = True
+        training.status = '已删除'
+        training.save()
 
-        if task_deleted > 0:
-            return JsonResponse({'code': 200, 'message': '删除成功', 'data': {}})
-        else:
-            return JsonResponse({'code': 500, 'message': '删除失败', 'data': {}})
+        return JsonResponse({'code': 200, 'message': '删除成功', 'data': {}})
     else:
         return JsonResponse({'code': 405, 'message': 'Invalid request method', 'data': {}}, status=405)
 
