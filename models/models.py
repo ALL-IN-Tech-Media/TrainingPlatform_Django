@@ -7,6 +7,8 @@ class ModelFactory(models.Model):
     model_name = models.CharField(max_length=255) # 第三层：Qwen2.5-0.5B-Instruct等
     config_info = models.JSONField(default=dict)
     description = models.TextField(blank=True)
+    is_downloaded = models.BooleanField(default=False)
+    status = models.CharField(max_length=128, default='')
 
     def __str__(self):
         return f"{self.category} - {self.series} - {self.model_name}"
