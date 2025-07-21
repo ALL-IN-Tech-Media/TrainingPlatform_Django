@@ -27,8 +27,7 @@ class TrainingModel(models.Model):
     status = models.CharField(max_length=16)
     is_deploy = models.BooleanField(default=False)
     is_monitor = models.BooleanField(default=False)
-
-
+    is_delete = models.BooleanField(default=False)
 
 
 class TrainingEpochModel(models.Model):
